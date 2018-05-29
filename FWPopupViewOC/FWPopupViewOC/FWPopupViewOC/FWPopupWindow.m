@@ -40,6 +40,7 @@
         [self addGestureRecognizer:gesture];
         
         UIPanGestureRecognizer *panGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(panGestureAction:)];
+        panGesture.delegate = self;
         [self addGestureRecognizer:panGesture];
     }
     return self;
@@ -65,6 +66,11 @@
     if (self.panWildToHide) {
         [self tapGestureAction:gesture];
     }
+}
+
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch
+{
+    return [touch.view isMemberOfClass:[self.attachView.dimMaskView class]];
 }
 
 - (UIView *)attachView
