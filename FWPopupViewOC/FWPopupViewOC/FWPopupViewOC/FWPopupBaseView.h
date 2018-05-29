@@ -269,7 +269,7 @@ static NSString *const FWHideAllPopupViewNotification = @"FWHideAllPopupViewNoti
 @property (nonatomic, assign) NSTimeInterval animationDuration;
 
 /**
- 3D放射动画（当且仅当：popupAnimationType == .scale3D 时有效）
+ 3D放射动画（当且仅当：popupAnimationStyle == .scale3D 时有效）
  */
 @property (nonatomic, assign) CATransform3D transform3D;
 /**
