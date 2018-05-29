@@ -92,6 +92,8 @@
             property.animationDuration = 0.5;
             customView.vProperty = property;
             
+            customView.attachedView = self.view;
+            
             [customView show];
         }
             break;

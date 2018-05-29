@@ -103,6 +103,7 @@
     if (self.attachedView != [FWPopupWindow sharedWindow].attachView) {
         if (self.tapGest == nil) {
             self.tapGest = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapGestureAction:)];
+            self.tapGest.delegate = self;
             [self.attachedView addGestureRecognizer:self.tapGest];
         } else {
             self.tapGest.enabled = YES;
@@ -506,7 +507,22 @@
 
 - (void)tapGestureAction:(UIGestureRecognizer *)gesture
 {
-    
+    if ([FWPopupWindow sharedWindow].touchWildToHide && !self.dimMaskAnimating)
+    {
+        for (UIView *v in self.attachedView.dimMaskView.subviews)
+        {
+            if ([v isKindOfClass:[FWPopupBaseView class]])
+            {
+                FWPopupBaseView *popupView = (FWPopupBaseView *)v;
+                [popupView hide];
+            }
+        }
+    }
+}
+
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch
+{
+    return [touch.view isMemberOfClass:[self.attachedView.dimMaskView class]];
 }
 
 - (void)showKeyboard
@@ -536,7 +552,7 @@
     _attachedView = attachedView;
     if ([attachedView isKindOfClass:[UIScrollView class]]) {
         UIScrollView *view = (UIScrollView *)attachedView;
-        view.scrollEnabled = NO;
+        self.originScrollEnabled = view.scrollEnabled;
     }
 }
 

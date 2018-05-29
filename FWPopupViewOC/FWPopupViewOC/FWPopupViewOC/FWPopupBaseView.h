@@ -106,7 +106,7 @@ typedef void(^FWPopupVoidBlock)(void);
 static NSString *const FWHideAllPopupViewNotification = @"FWHideAllPopupViewNotification";
 
 
-@interface FWPopupBaseView : UIView
+@interface FWPopupBaseView : UIView <UIGestureRecognizerDelegate>
 
 /**
  1、当外部没有传入该参数时，默认为UIWindow的根控制器的视图，即表示弹窗放在FWPopupWindow上；
