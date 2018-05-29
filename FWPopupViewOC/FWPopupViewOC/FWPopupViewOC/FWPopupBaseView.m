@@ -197,7 +197,7 @@
             
             [strongSelf setupFrame];
             
-            if (strongSelf.vProperty.popupAnimationType == FWPopupAnimationTypePosition) // 位移动画
+            if (strongSelf.vProperty.popupAnimationStyle == FWPopupAnimationStylePosition) // 位移动画
             {
                 CABasicAnimation *baseAnimation = [CABasicAnimation animationWithKeyPath:@"position"];
                 
@@ -223,17 +223,17 @@
                 [strongSelf.layer addAnimation:baseAnimation forKey:@"positionAnimation"];
                 
             }
-            else if (strongSelf.vProperty.popupAnimationType == FWPopupAnimationTypeScale || strongSelf.vProperty.popupAnimationType == FWPopupAnimationTypeScale3D) // 缩放动画/3D缩放动画
+            else if (strongSelf.vProperty.popupAnimationStyle == FWPopupAnimationStyleScale || strongSelf.vProperty.popupAnimationStyle == FWPopupAnimationStyleScale3D) // 缩放动画/3D缩放动画
             {
                 strongSelf.layer.anchorPoint = [strongSelf obtainAnchorPoint];
                 strongSelf.frame = strongSelf.finalFrame;
-                if (strongSelf.vProperty.popupAnimationType == FWPopupAnimationTypeScale) {
+                if (strongSelf.vProperty.popupAnimationStyle == FWPopupAnimationStyleScale) {
                     strongSelf.transform = strongSelf.vProperty.transform;
                 } else {
                     strongSelf.layer.transform = strongSelf.vProperty.transform3D;
                 }
             }
-            else if (strongSelf.vProperty.popupAnimationType == FWPopupAnimationTypeFrame) // 修改frame值的动画
+            else if (strongSelf.vProperty.popupAnimationStyle == FWPopupAnimationStyleFrame) // 修改frame值的动画
             {
                 CGRect tmpFrame = strongSelf.frame;
                 
@@ -263,13 +263,13 @@
             
             [UIView animateWithDuration:strongSelf.vProperty.animationDuration delay:0.0 options:(UIViewAnimationOptionCurveLinear | UIViewAnimationOptionBeginFromCurrentState) animations:^{
                 
-                switch (strongSelf.vProperty.popupAnimationType) {
-                    case FWPopupAnimationTypePosition:
+                switch (strongSelf.vProperty.popupAnimationStyle) {
+                    case FWPopupAnimationStylePosition:
                         break;
-                    case FWPopupAnimationTypeScale:
+                    case FWPopupAnimationStyleScale:
                         strongSelf.transform = CGAffineTransformIdentity;
                         break;
-                    case FWPopupAnimationTypeScale3D:
+                    case FWPopupAnimationStyleScale3D:
                         strongSelf.layer.transform = CATransform3DIdentity;
                         break;
                     default:
@@ -300,7 +300,7 @@
         
         [UIView animateWithDuration:strongSelf.vProperty.animationDuration delay:0.0 options:(UIViewAnimationOptionCurveLinear | UIViewAnimationOptionBeginFromCurrentState) animations:^{
             
-            if (strongSelf.vProperty.popupAnimationType == FWPopupAnimationTypePosition) // 位移动画
+            if (strongSelf.vProperty.popupAnimationStyle == FWPopupAnimationStylePosition) // 位移动画
             {
                 CGRect tmpFrame = strongSelf.frame;
                 FWPopupAlignment alignment = strongSelf.vProperty.popupAlignment;
@@ -322,13 +322,13 @@
                 }
                 strongSelf.frame = tmpFrame;
             }
-            else if (strongSelf.vProperty.popupAnimationType == FWPopupAnimationTypeScale || strongSelf.vProperty.popupAnimationType == FWPopupAnimationTypeScale3D) // 缩放动画/3D缩放动画
+            else if (strongSelf.vProperty.popupAnimationStyle == FWPopupAnimationStyleScale || strongSelf.vProperty.popupAnimationStyle == FWPopupAnimationStyleScale3D) // 缩放动画/3D缩放动画
             {
                 strongSelf.layer.anchorPoint = [strongSelf obtainAnchorPoint];
                 strongSelf.frame = strongSelf.finalFrame;
                 strongSelf.transform = strongSelf.vProperty.transform;
             }
-            else if (strongSelf.vProperty.popupAnimationType == FWPopupAnimationTypeFrame) // 修改frame值的动画
+            else if (strongSelf.vProperty.popupAnimationStyle == FWPopupAnimationStyleFrame) // 修改frame值的动画
             {
                 CGRect tmpFrame = strongSelf.frame;
                 FWPopupAlignment alignment = strongSelf.vProperty.popupAlignment;
@@ -365,13 +365,13 @@
             }
             
             // 还原视图，防止下次动画时出错
-            switch (strongSelf.vProperty.popupAnimationType) {
-                case FWPopupAnimationTypeFrame:
+            switch (strongSelf.vProperty.popupAnimationStyle) {
+                case FWPopupAnimationStyleFrame:
                 {
                     strongSelf.frame = strongSelf.finalFrame;
                 }
                     break;
-                case FWPopupAnimationTypePosition:
+                case FWPopupAnimationStylePosition:
                 {
                     strongSelf.frame = strongSelf.finalFrame;
                 }
@@ -594,7 +594,7 @@
     self.popupArrowBottomCornerRadius = 4.0;
     
     self.popupAlignment = FWPopupAlignmentCenter;
-    self.popupAnimationType = FWPopupAnimationTypePosition;
+    self.popupAnimationStyle = FWPopupAnimationStylePosition;
     
     self.popupEdgeInsets = UIEdgeInsetsMake(0, 0, 0, 0);
     self.animationDuration = 0.2;

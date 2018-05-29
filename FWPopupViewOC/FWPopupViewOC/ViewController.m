@@ -53,7 +53,7 @@
             
             FWPopupBaseViewProperty *property = [FWPopupBaseViewProperty manager];
             property.popupAlignment = FWPopupAlignmentCenter;
-            property.popupAnimationType = FWPopupAnimationTypeScale;
+            property.popupAnimationStyle = FWPopupAnimationStyleScale;
             property.maskViewColor = [UIColor colorWithWhite:0 alpha:0.3];
             property.touchWildToHide = @"1";
             property.popupEdgeInsets = UIEdgeInsetsMake(0, 0, 0, 0);
@@ -69,7 +69,7 @@
             
             FWPopupBaseViewProperty *property = [FWPopupBaseViewProperty manager];
             property.popupAlignment = FWPopupAlignmentTopCenter;
-            property.popupAnimationType = FWPopupAnimationTypePosition;
+            property.popupAnimationStyle = FWPopupAnimationStylePosition;
             property.maskViewColor = [UIColor colorWithWhite:0 alpha:0.5];
             property.touchWildToHide = @"1";
             property.popupEdgeInsets = UIEdgeInsetsMake(0, 0, 0, 0);
@@ -85,7 +85,7 @@
             
             FWPopupBaseViewProperty *property = [FWPopupBaseViewProperty manager];
             property.popupAlignment = FWPopupAlignmentTopCenter;
-            property.popupAnimationType = FWPopupAnimationTypeFrame;
+            property.popupAnimationStyle = FWPopupAnimationStyleFrame;
             property.maskViewColor = [UIColor colorWithWhite:0 alpha:0.5];
             property.touchWildToHide = @"1";
             property.popupEdgeInsets = UIEdgeInsetsMake(64, 0, 0, 0);
@@ -101,7 +101,7 @@
             
             FWPopupBaseViewProperty *property = [FWPopupBaseViewProperty manager];
             property.popupAlignment = FWPopupAlignmentTopCenter;
-            property.popupAnimationType = FWPopupAnimationTypeScale;
+            property.popupAnimationStyle = FWPopupAnimationStyleScale;
             property.maskViewColor = [UIColor colorWithWhite:0 alpha:0.5];
             property.touchWildToHide = @"1";
             property.popupEdgeInsets = UIEdgeInsetsMake(64, 0, 0, 0);
@@ -118,7 +118,7 @@
             
             FWPopupBaseViewProperty *property = [FWPopupBaseViewProperty manager];
             property.popupAlignment = FWPopupAlignmentLeftCenter;
-            property.popupAnimationType = FWPopupAnimationTypePosition;
+            property.popupAnimationStyle = FWPopupAnimationStylePosition;
             property.maskViewColor = [UIColor colorWithWhite:0 alpha:0.5];
             property.touchWildToHide = @"1";
             property.popupEdgeInsets = UIEdgeInsetsMake(0, 0, 0, 0);
@@ -134,7 +134,7 @@
             
             FWPopupBaseViewProperty *property = [FWPopupBaseViewProperty manager];
             property.popupAlignment = FWPopupAlignmentLeftCenter;
-            property.popupAnimationType = FWPopupAnimationTypeFrame;
+            property.popupAnimationStyle = FWPopupAnimationStyleFrame;
             property.maskViewColor = [UIColor colorWithWhite:0 alpha:0.5];
             property.touchWildToHide = @"1";
             property.popupEdgeInsets = UIEdgeInsetsMake(0, 0, 0, 0);
@@ -150,7 +150,7 @@
             
             FWPopupBaseViewProperty *property = [FWPopupBaseViewProperty manager];
             property.popupAlignment = FWPopupAlignmentLeftCenter;
-            property.popupAnimationType = FWPopupAnimationTypeScale;
+            property.popupAnimationStyle = FWPopupAnimationStyleScale;
             property.maskViewColor = [UIColor colorWithWhite:0 alpha:0.5];
             property.touchWildToHide = @"1";
             property.popupEdgeInsets = UIEdgeInsetsMake(0, 50, 0, 0);
@@ -167,7 +167,7 @@
             
             FWPopupBaseViewProperty *property = [FWPopupBaseViewProperty manager];
             property.popupAlignment = FWPopupAlignmentBottomCenter;
-            property.popupAnimationType = FWPopupAnimationTypePosition;
+            property.popupAnimationStyle = FWPopupAnimationStylePosition;
             property.maskViewColor = [UIColor colorWithWhite:0 alpha:0.5];
             property.touchWildToHide = @"1";
             property.popupEdgeInsets = UIEdgeInsetsMake(0, 0, 0, 0);
@@ -183,7 +183,7 @@
             
             FWPopupBaseViewProperty *property = [FWPopupBaseViewProperty manager];
             property.popupAlignment = FWPopupAlignmentBottomCenter;
-            property.popupAnimationType = FWPopupAnimationTypeFrame;
+            property.popupAnimationStyle = FWPopupAnimationStyleFrame;
             property.maskViewColor = [UIColor colorWithWhite:0 alpha:0.5];
             property.touchWildToHide = @"1";
             property.popupEdgeInsets = UIEdgeInsetsMake(0, 0, 64, 0);
@@ -199,7 +199,7 @@
             
             FWPopupBaseViewProperty *property = [FWPopupBaseViewProperty manager];
             property.popupAlignment = FWPopupAlignmentBottomCenter;
-            property.popupAnimationType = FWPopupAnimationTypeScale;
+            property.popupAnimationStyle = FWPopupAnimationStyleScale;
             property.maskViewColor = [UIColor colorWithWhite:0 alpha:0.5];
             property.touchWildToHide = @"1";
             property.popupEdgeInsets = UIEdgeInsetsMake(0, 0, 0, 0);
@@ -216,7 +216,7 @@
             
             FWPopupBaseViewProperty *property = [FWPopupBaseViewProperty manager];
             property.popupAlignment = FWPopupAlignmentRightCenter;
-            property.popupAnimationType = FWPopupAnimationTypePosition;
+            property.popupAnimationStyle = FWPopupAnimationStylePosition;
             property.maskViewColor = [UIColor colorWithWhite:0 alpha:0.5];
             property.touchWildToHide = @"1";
             property.popupEdgeInsets = UIEdgeInsetsMake(0, 0, 0, 0);
@@ -232,7 +232,7 @@
             
             FWPopupBaseViewProperty *property = [FWPopupBaseViewProperty manager];
             property.popupAlignment = FWPopupAlignmentRightCenter;
-            property.popupAnimationType = FWPopupAnimationTypeFrame;
+            property.popupAnimationStyle = FWPopupAnimationStyleFrame;
             property.maskViewColor = [UIColor colorWithWhite:0 alpha:0.5];
             property.touchWildToHide = @"1";
             property.popupEdgeInsets = UIEdgeInsetsMake(0, 0, 0, 50);
@@ -248,7 +248,7 @@
             
             FWPopupBaseViewProperty *property = [FWPopupBaseViewProperty manager];
             property.popupAlignment = FWPopupAlignmentRightCenter;
-            property.popupAnimationType = FWPopupAnimationTypeScale;
+            property.popupAnimationStyle = FWPopupAnimationStyleScale;
             property.maskViewColor = [UIColor colorWithWhite:0 alpha:0.5];
             property.touchWildToHide = @"1";
             property.popupEdgeInsets = UIEdgeInsetsMake(0, 0, 0, 0);

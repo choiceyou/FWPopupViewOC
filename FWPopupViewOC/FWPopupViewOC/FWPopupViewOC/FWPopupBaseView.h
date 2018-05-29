@@ -54,16 +54,16 @@ typedef NS_ENUM(NSInteger, FWPopupAlignment) {
 /**
  自定义弹窗动画类型
 
- - FWPopupAnimationTypePosition: 位移动画，视图靠边的时候建议使用
- - FWPopupAnimationTypeScale: 缩放动画
- - FWPopupAnimationTypeScale3D: 3D缩放动画（注意：这边隐藏时用的还是scale动画）
- - FWPopupAnimationTypeFrame: 修改frame值的动画，视图未靠边的时候建议使用
+ - FWPopupAnimationStylePosition: 位移动画，视图靠边的时候建议使用
+ - FWPopupAnimationStyleScale: 缩放动画
+ - FWPopupAnimationStyleScale3D: 3D缩放动画（注意：这边隐藏时用的还是scale动画）
+ - FWPopupAnimationStyleFrame: 修改frame值的动画，视图未靠边的时候建议使用
  */
-typedef NS_ENUM(NSInteger, FWPopupAnimationType) {
-    FWPopupAnimationTypePosition = 0,
-    FWPopupAnimationTypeScale,
-    FWPopupAnimationTypeScale3D,
-    FWPopupAnimationTypeFrame,
+typedef NS_ENUM(NSInteger, FWPopupAnimationStyle) {
+    FWPopupAnimationStylePosition = 0,
+    FWPopupAnimationStyleScale,
+    FWPopupAnimationStyleScale3D,
+    FWPopupAnimationStyleFrame,
 };
 
 /**
@@ -247,7 +247,7 @@ static NSString *const FWHideAllPopupViewNotification = @"FWHideAllPopupViewNoti
 /**
  弹窗动画类型
  */
-@property (nonatomic, assign) FWPopupAnimationType popupAnimationType;
+@property (nonatomic, assign) FWPopupAnimationStyle popupAnimationStyle;
 
 /**
  弹窗偏移量

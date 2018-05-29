@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "FWPopupViewOC"
-  s.version      = "2.0.0"
+  s.version      = "2.0.2"
   s.summary      = "信手拈来的自定义弹窗-OC版本"
 
   # This description is used to generate tags and improve search results.
@@ -80,7 +80,7 @@ Pod::Spec.new do |s|
   #  Supports git, hg, bzr, svn and HTTP.
   #
 
-  s.source       = { :git => "https://github.com/choiceyou/FWPopupView.git", :tag => "#{s.version}" }
+  s.source       = { :git => "https://github.com/choiceyou/FWPopupViewOC.git", :tag => "#{s.version}" }
 
 
   # ――― Source Code ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
@@ -91,7 +91,7 @@ Pod::Spec.new do |s|
   #  Not including the public_header_files will make all headers public.
   #
 
-  s.source_files  = "FWPopupView/FWPopupView/FWPopupView/*.{h,m}"
+  s.source_files  = "FWPopupViewOC/FWPopupViewOC/FWPopupViewOC/*.{h,m}"
   # s.exclude_files = "Classes/Exclude"
 
   # s.public_header_files = "Classes/**/*.h"
