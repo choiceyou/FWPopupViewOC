@@ -6,6 +6,15 @@
 //  Copyright © 2018年 xfg. All rights reserved.
 //
 
+/** ************************************************
+ 
+ github地址：https://github.com/choiceyou/FWPopupViewOC
+ bug反馈、交流群：670698309
+ 
+ ***************************************************
+ */
+
+
 #import <UIKit/UIKit.h>
 #import "UIView+PopupView.h"
 #import "FWPopupBaseView.h"

@@ -8,7 +8,7 @@
 
 /** ************************************************
  
- github地址：https://github.com/choiceyou/FWPopupView
+ github地址：https://github.com/choiceyou/FWPopupViewOC
  bug反馈、交流群：670698309
  
  ***************************************************
@@ -135,12 +135,28 @@ static NSString *const FWHideAllPopupViewNotification = @"FWHideAllPopupViewNoti
 @property (nonatomic, assign) BOOL                      withKeyboard;
 
 
+/**
+ 显示
+ */
 - (void)show;
 
+/**
+ 显示
+ 
+ @param completionBlock 显示、隐藏完成回调
+ */
 - (void)showWithBlock:(FWPopupCompletionBlock)completionBlock;
 
+/**
+ 隐藏
+ */
 - (void)hide;
 
+/**
+ 隐藏
+ 
+ @param completionBlock 显示、隐藏完成回调
+ */
 - (void)hideWithBlock:(FWPopupCompletionBlock)completionBlock;
 
 @end

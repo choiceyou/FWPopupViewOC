@@ -6,15 +6,6 @@
 //  Copyright © 2018年 xfg. All rights reserved.
 //
 
-/** ************************************************
- 
- github地址：https://github.com/choiceyou/FWPopupView
- bug反馈、交流群：670698309
- 
- ***************************************************
- */
-
-
 static const void *dimReferenceCountKey             = &dimReferenceCountKey;
 
 static const void *dimMaskViewKey                   = &dimMaskViewKey;

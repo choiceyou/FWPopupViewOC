@@ -84,7 +84,7 @@
 /**
  显示
  
- @param completionBlock 显示、隐藏回调
+ @param completionBlock 显示、隐藏完成回调
  */
 - (void)showWithBlock:(FWPopupCompletionBlock)completionBlock
 {
@@ -140,7 +140,7 @@
 /**
  隐藏
  
- @param completionBlock 显示、隐藏回调
+ @param completionBlock 显示、隐藏完成回调
  */
 - (void)hideWithBlock:(FWPopupCompletionBlock)completionBlock
 {
