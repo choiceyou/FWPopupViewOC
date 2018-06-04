@@ -1,4 +1,4 @@
-# IOS之弹窗 -- OC/([Swift4.x](https://github.com/choiceyou/FWPopupView))
+# IOS之弹窗 -- OC/[Swift4.x](https://github.com/choiceyou/FWPopupView)
 
 [![Platform](http://img.shields.io/badge/platform-iOS-blue.svg?style=flat)](http://cocoapods.org/?q=FWPopupView)&nbsp;
 ![Language](https://img.shields.io/badge/language-swift-orange.svg?style=flat)&nbsp;
