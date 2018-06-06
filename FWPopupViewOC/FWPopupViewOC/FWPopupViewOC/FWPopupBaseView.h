@@ -2,7 +2,7 @@
 //  FWPopupBaseView.h
 //  FWPopupViewOC
 //
-//  Created by xfg on 2018/5/25.
+//  Created by xfg on 2017/5/25.
 //  Copyright © 2018年 xfg. All rights reserved.
 //
 
@@ -159,6 +159,11 @@ static NSString *const FWHideAllPopupViewNotification = @"FWHideAllPopupViewNoti
  */
 - (void)hideWithBlock:(FWPopupCompletionBlock)completionBlock;
 
+/**
+ 遮罩层被单击，主要用来给子类重写
+ */
+- (void)clicedMaskView;
+
 @end
 
 
@@ -292,5 +297,15 @@ static NSString *const FWHideAllPopupViewNotification = @"FWHideAllPopupViewNoti
  2D放射动画
  */
 @property (nonatomic, assign) CGAffineTransform transform;
+
+/**
+ 是否需要让多余部分的遮罩层变为无色（当弹窗没有任何一条边跟遮罩层的任意一条边重合的时候，就可能会把遮罩层分成几部分，此时看上去就不大美观了，因此可以使用该属性把某些部分设置为无色）
+ */
+@property (nonatomic, assign) BOOL shouldClearSpilthMask;
+
+/**
+ 初始化相关属性
+ */
+- (void)setupParams;
 
 @end

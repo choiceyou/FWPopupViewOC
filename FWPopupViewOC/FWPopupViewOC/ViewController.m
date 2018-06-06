@@ -2,12 +2,13 @@
 //  ViewController.m
 //  FWPopupViewOC
 //
-//  Created by xfg on 2018/5/25.
+//  Created by xfg on 2017/5/25.
 //  Copyright © 2018年 xfg. All rights reserved.
 //
 
 #import "ViewController.h"
 #import "FWCustomView.h"
+#import "GuideMaskTestVC.h"
 
 @interface ViewController ()
 
@@ -21,7 +22,7 @@
 {
     [super viewDidLoad];
     
-    self.titleArray = @[@"center - scale", @"topCenter - position", @"topCenter - frame", @"topCenter - scale", @"leftCenter - position", @"leftCenter - frame", @"leftCenter - scale", @"bottomCenter - position", @"bottomCenter - frame", @"bottomCenter - scale", @"rightCenter - position", @"rightCenter - frame", @"rightCenter - scale"];
+    self.titleArray = @[@"center - scale", @"topCenter - position", @"topCenter - frame", @"topCenter - scale", @"leftCenter - position", @"leftCenter - frame", @"leftCenter - scale", @"bottomCenter - position", @"bottomCenter - frame", @"bottomCenter - scale", @"rightCenter - position", @"rightCenter - frame", @"rightCenter - scale", @"GuideMaskTest"];
     
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"cellId"];
     self.tableView.estimatedRowHeight = 44.0;
@@ -41,6 +42,11 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cellId"];
     cell.textLabel.text = self.titleArray[indexPath.row];
     cell.textLabel.numberOfLines = 0;
+    if (indexPath.row == 13) {
+        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    } else {
+        cell.accessoryType = UITableViewCellAccessoryNone;
+    }
     return cell;
 }
 
@@ -59,8 +65,6 @@
             property.popupEdgeInsets = UIEdgeInsetsMake(0, 0, 0, 0);
             property.animationDuration = 0.2;
             customView.vProperty = property;
-            
-            customView.attachedView = self.view;
             
             [customView show];
         }
@@ -92,9 +96,8 @@
             property.touchWildToHide = @"1";
             property.popupEdgeInsets = UIEdgeInsetsMake(64, 0, 0, 0);
             property.animationDuration = 0.5;
+            property.shouldClearSpilthMask = YES;
             customView.vProperty = property;
-            
-            customView.attachedView = self.view;
             
             [customView show];
         }
@@ -192,6 +195,7 @@
             property.touchWildToHide = @"1";
             property.popupEdgeInsets = UIEdgeInsetsMake(0, 0, 64, 0);
             property.animationDuration = 0.5;
+            property.shouldClearSpilthMask = YES;
             customView.vProperty = property;
             
             [customView show];
@@ -259,8 +263,13 @@
             property.animationDuration = 0.3;
             customView.vProperty = property;
             
+            customView.attachedView = self.view;
+            
             [customView show];
         }
+            break;
+        case 13:
+            [self.navigationController pushViewController:[[GuideMaskTestVC alloc] init] animated:YES];
             break;
             
         default:

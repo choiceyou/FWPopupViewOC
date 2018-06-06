@@ -2,7 +2,7 @@
 //  FWPopupWindow.m
 //  FWPopupViewOC
 //
-//  Created by xfg on 2018/5/25.
+//  Created by xfg on 2017/5/25.
 //  Copyright © 2018年 xfg. All rights reserved.
 //
 
@@ -48,14 +48,18 @@
 
 - (void)tapGestureAction:(UIGestureRecognizer *)gesture
 {
-    if (self.touchWildToHide && !self.dimMaskAnimating)
+    if (!self.dimMaskAnimating)
     {
         for (UIView *v in [self attachView].dimMaskView.subviews)
         {
             if ([v isKindOfClass:[FWPopupBaseView class]])
             {
                 FWPopupBaseView *popupView = (FWPopupBaseView *)v;
-                [popupView hide];
+                [popupView clicedMaskView];
+                if (self.touchWildToHide)
+                {
+                    [popupView hide];
+                }
             }
         }
     }

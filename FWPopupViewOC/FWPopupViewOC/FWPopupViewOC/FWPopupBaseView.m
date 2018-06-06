@@ -2,7 +2,7 @@
 //  FWPopupBaseView.m
 //  FWPopupViewOC
 //
-//  Created by xfg on 2018/5/25.
+//  Created by xfg on 2017/5/25.
 //  Copyright © 2018年 xfg. All rights reserved.
 //
 
@@ -383,6 +383,13 @@
                 }
                     break;
             }
+            if (self.vProperty.shouldClearSpilthMask) {
+                UIBezierPath *path = [UIBezierPath bezierPathWithRect:self.attachedView.bounds];
+                CAShapeLayer *maskLayer = [CAShapeLayer layer];
+                maskLayer.frame = strongSelf.attachedView.bounds;
+                maskLayer.path = path.CGPath;
+                strongSelf.attachedView.layer.mask = maskLayer;
+            }
         }];
     };
     return popupBlock;
@@ -432,12 +439,16 @@
     return CGPointMake(tmpX, tmpY);
 }
 
+/**
+ 设置弹窗最终需要展示的frame
+ */
 - (void)setupFrame
 {
-    if (!self.haveSetFrame) {
-        
+    if (!self.haveSetFrame)
+    {
         CGRect tmpFrame = self.frame;
-        switch (self.vProperty.popupAlignment) {
+        switch (self.vProperty.popupAlignment)
+        {
             case FWPopupAlignmentCenter:
                 tmpFrame.origin.x += (CGRectGetWidth(self.attachedView.frame) - CGRectGetWidth(self.frame)) / 2 + self.vProperty.popupEdgeInsets.left - self.vProperty.popupEdgeInsets.right;
                 tmpFrame.origin.y += (CGRectGetHeight(self.attachedView.frame) - CGRectGetHeight(self.frame)) / 2 +self.vProperty.popupEdgeInsets.top - self.vProperty.popupEdgeInsets.bottom;
@@ -500,6 +511,53 @@
         self.frame = tmpFrame;
         self.finalFrame = tmpFrame;
     }
+    
+    [self setupSpilthMask];
+}
+
+/**
+ 处理多余部分的遮罩层
+ */
+- (void)setupSpilthMask
+{
+    CGRect spilthMaskFrame = CGRectMake(0, 0, 0, 0);
+    
+    if (!self.vProperty.shouldClearSpilthMask) {
+        return;
+    }
+    
+    if (self.vProperty.popupAlignment == FWPopupAlignmentTop || self.vProperty.popupAlignment == FWPopupAlignmentTopCenter || self.vProperty.popupAlignment == FWPopupAlignmentTopLeft || self.vProperty.popupAlignment == FWPopupAlignmentTopRight)
+    {
+        spilthMaskFrame = CGRectMake(0, 0, self.attachedView.frame.size.width, self.finalFrame.origin.y);
+    }
+    else if (self.vProperty.popupAlignment == FWPopupAlignmentLeft || self.vProperty.popupAlignment == FWPopupAlignmentLeftCenter)
+    {
+        spilthMaskFrame = CGRectMake(0, 0, self.finalFrame.origin.x, self.attachedView.frame.size.height);
+    }
+    else if (self.vProperty.popupAlignment == FWPopupAlignmentBottom || self.vProperty.popupAlignment == FWPopupAlignmentBottomCenter || self.vProperty.popupAlignment == FWPopupAlignmentBottomLeft || self.vProperty.popupAlignment == FWPopupAlignmentBottomRight)
+    {
+        spilthMaskFrame = CGRectMake(0, CGRectGetMaxY(self.finalFrame), self.attachedView.frame.size.width, self.attachedView.frame.size.height - CGRectGetMaxY(self.finalFrame));
+    }
+    else if (self.vProperty.popupAlignment == FWPopupAlignmentRight || self.vProperty.popupAlignment == FWPopupAlignmentRightCenter)
+    {
+        spilthMaskFrame = CGRectMake(self.attachedView.frame.size.width - CGRectGetMaxX(self.finalFrame), 0, self.attachedView.frame.size.width - CGRectGetMaxX(self.finalFrame), self.attachedView.frame.size.height);
+    }
+    
+    if (spilthMaskFrame.size.width > 0 && spilthMaskFrame.size.height > 0)
+    {
+        // 获取可见区域的路径(开始路径)
+        UIBezierPath *visualPath = [UIBezierPath bezierPathWithRoundedRect:spilthMaskFrame cornerRadius:0];
+        // 获取终点路径
+        UIBezierPath *toPath = [UIBezierPath bezierPathWithRect:self.attachedView.bounds];
+        [toPath appendPath:visualPath];
+        
+        CAShapeLayer *maskLayer = [CAShapeLayer layer];
+        maskLayer.frame = self.attachedView.bounds;
+        maskLayer.path = toPath.CGPath;
+        maskLayer.fillRule = kCAFillRuleEvenOdd;
+        
+        self.attachedView.layer.mask = maskLayer;
+    }
 }
 
 
@@ -507,6 +565,8 @@
 
 - (void)tapGestureAction:(UIGestureRecognizer *)gesture
 {
+    [self clicedMaskView];
+    
     if ([FWPopupWindow sharedWindow].touchWildToHide && !self.dimMaskAnimating)
     {
         for (UIView *v in self.attachedView.dimMaskView.subviews)
@@ -523,6 +583,11 @@
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch
 {
     return [touch.view isMemberOfClass:[self.attachedView.dimMaskView class]];
+}
+
+- (void)clicedMaskView
+{
+    // 供子类重写
 }
 
 - (void)showKeyboard
