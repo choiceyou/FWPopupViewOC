@@ -190,9 +190,12 @@
     FWGuideMaskViewProperty *property = (FWGuideMaskViewProperty *)self.vProperty;
     
     if (!property.arrowImage) {
-        NSString *path = [[NSBundle mainBundle] pathForResource:@"FWPopupViewOC" ofType:@"bundle"];
-        NSBundle *bundle = [NSBundle bundleWithPath:path];
-        self.arrowImgView.image = [UIImage imageNamed:[bundle pathForResource:@"guide_arrow@3x" ofType:@"png"]];
+        NSBundle *bundle = [NSBundle bundleForClass:[FWGuideMaskView class]];
+        NSURL *url = [bundle URLForResource:@"FWPopupViewOC" withExtension:@"bundle"];
+        NSBundle *imageBundle = [NSBundle bundleWithURL:url];
+        NSString *path = [imageBundle pathForResource:@"guide_arrow@3x" ofType:@"png"];
+        
+        self.arrowImgView.image = [UIImage imageWithContentsOfFile:path];
     } else {
         self.arrowImgView.image = property.arrowImage;
     }
