@@ -19,6 +19,8 @@
 		4953B48B20B80D4D004B87D7 /* UIView+PopupView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4953B48A20B80D4D004B87D7 /* UIView+PopupView.m */; };
 		4953B48E20B8152F004B87D7 /* FWPopupWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 4953B48D20B8152F004B87D7 /* FWPopupWindow.m */; };
 		495FFCF620BBB0CD009746B1 /* FWCustomView.m in Sources */ = {isa = PBXBuildFile; fileRef = 495FFCF520BBB0CD009746B1 /* FWCustomView.m */; };
+		496B482D20C8BC7100EE518D /* FWAreaPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 496B482C20C8BC7100EE518D /* FWAreaPickerView.m */; };
+		496B482F20C8BC7A00EE518D /* area_cn.plist in Resources */ = {isa = PBXBuildFile; fileRef = 496B482E20C8BC7A00EE518D /* area_cn.plist */; };
 		49754ABE20C61DCE009B31CC /* FWGuideMaskView.m in Sources */ = {isa = PBXBuildFile; fileRef = 49754ABD20C61DCE009B31CC /* FWGuideMaskView.m */; };
 		49754AC220C66E91009B31CC /* GuideMaskTestVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 49754AC020C66E91009B31CC /* GuideMaskTestVC.m */; };
 		49754AC320C66E91009B31CC /* GuideMaskTestVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 49754AC120C66E91009B31CC /* GuideMaskTestVC.xib */; };
@@ -69,6 +71,9 @@
 		4953B48D20B8152F004B87D7 /* FWPopupWindow.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FWPopupWindow.m; sourceTree = "<group>"; };
 		495FFCF420BBB0CD009746B1 /* FWCustomView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FWCustomView.h; sourceTree = "<group>"; };
 		495FFCF520BBB0CD009746B1 /* FWCustomView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FWCustomView.m; sourceTree = "<group>"; };
+		496B482B20C8BC7100EE518D /* FWAreaPickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FWAreaPickerView.h; sourceTree = "<group>"; };
+		496B482C20C8BC7100EE518D /* FWAreaPickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FWAreaPickerView.m; sourceTree = "<group>"; };
+		496B482E20C8BC7A00EE518D /* area_cn.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = area_cn.plist; sourceTree = "<group>"; };
 		49754ABC20C61DCE009B31CC /* FWGuideMaskView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FWGuideMaskView.h; sourceTree = "<group>"; };
 		49754ABD20C61DCE009B31CC /* FWGuideMaskView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FWGuideMaskView.m; sourceTree = "<group>"; };
 		49754ABF20C66E91009B31CC /* GuideMaskTestVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GuideMaskTestVC.h; sourceTree = "<group>"; };
@@ -157,6 +162,9 @@
 				49754ABF20C66E91009B31CC /* GuideMaskTestVC.h */,
 				49754AC020C66E91009B31CC /* GuideMaskTestVC.m */,
 				49754AC120C66E91009B31CC /* GuideMaskTestVC.xib */,
+				496B482B20C8BC7100EE518D /* FWAreaPickerView.h */,
+				496B482C20C8BC7100EE518D /* FWAreaPickerView.m */,
+				496B482E20C8BC7A00EE518D /* area_cn.plist */,
 				4953B45620B7FC38004B87D7 /* Assets.xcassets */,
 				4953B45820B7FC38004B87D7 /* LaunchScreen.storyboard */,
 				4953B45B20B7FC38004B87D7 /* Info.plist */,
@@ -317,6 +325,7 @@
 				4953B45A20B7FC38004B87D7 /* LaunchScreen.storyboard in Resources */,
 				4953B45720B7FC38004B87D7 /* Assets.xcassets in Resources */,
 				4917C08D20C7B35100A5006E /* FWPopupViewOC.bundle in Resources */,
+				496B482F20C8BC7A00EE518D /* area_cn.plist in Resources */,
 				49754AC320C66E91009B31CC /* GuideMaskTestVC.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -381,6 +390,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				496B482D20C8BC7100EE518D /* FWAreaPickerView.m in Sources */,
 				4953B45220B7FC36004B87D7 /* ViewController.m in Sources */,
 				4953B45D20B7FC38004B87D7 /* main.m in Sources */,
 				4953B48B20B80D4D004B87D7 /* UIView+PopupView.m in Sources */,

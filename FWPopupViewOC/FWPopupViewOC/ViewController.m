@@ -9,6 +9,7 @@
 #import "ViewController.h"
 #import "FWCustomView.h"
 #import "GuideMaskTestVC.h"
+#import "FWAreaPickerView.h"
 
 @interface ViewController ()
 
@@ -22,7 +23,7 @@
 {
     [super viewDidLoad];
     
-    self.titleArray = @[@"center - scale", @"topCenter - position", @"topCenter - frame", @"topCenter - scale", @"leftCenter - position", @"leftCenter - frame", @"leftCenter - scale", @"bottomCenter - position", @"bottomCenter - frame", @"bottomCenter - scale", @"rightCenter - position", @"rightCenter - frame", @"rightCenter - scale", @"GuideMaskTest"];
+    self.titleArray = @[@"center - scale", @"topCenter - position", @"topCenter - frame", @"topCenter - scale", @"leftCenter - position", @"leftCenter - frame", @"leftCenter - scale", @"bottomCenter - position", @"bottomCenter - frame", @"bottomCenter - scale", @"rightCenter - position", @"rightCenter - frame", @"rightCenter - scale", @"GuideMaskTest", @"AreaPickerTest"];
     
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"cellId"];
     self.tableView.estimatedRowHeight = 44.0;
@@ -270,6 +271,15 @@
             break;
         case 13:
             [self.navigationController pushViewController:[[GuideMaskTestVC alloc] init] animated:YES];
+            break;
+        case 14:
+        {
+            FWAreaPickerView *areaPickerView = [[FWAreaPickerView alloc] init];
+            areaPickerView.confirmBlock = ^(NSString *province, NSString *city, NSString *area) {
+                NSLog(@"您当前选择了：%@ %@ %@",province,city,area);
+            };
+            [areaPickerView show];
+        }
             break;
             
         default:
