@@ -173,12 +173,10 @@ static const void *dimMaskAnimatingKey              = &dimMaskAnimatingKey;
                              if (self == [FWPopupWindow sharedWindow].attachView)
                              {
                                  [FWPopupWindow sharedWindow].hidden = YES;
-                                 [[[UIApplication sharedApplication].delegate window] makeKeyWindow];
                              }
                              else if (self == [FWPopupWindow sharedWindow])
                              {
                                  self.hidden = YES;
-                                 [[[UIApplication sharedApplication].delegate window] makeKeyWindow];
                              }
                          }
                          

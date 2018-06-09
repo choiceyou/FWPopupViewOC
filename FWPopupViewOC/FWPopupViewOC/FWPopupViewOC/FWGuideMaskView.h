@@ -4,7 +4,7 @@
 //
 //  Created by xfg on 2018/6/5.
 //  Copyright © 2018年 xfg. All rights reserved.
-//
+//  新功能引导弹窗
 
 /** ************************************************
  

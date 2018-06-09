@@ -4,7 +4,7 @@
 //
 //  Created by xfg on 2017/5/25.
 //  Copyright © 2018年 xfg. All rights reserved.
-//
+//  弹窗基类
 
 /** ************************************************
  
@@ -115,6 +115,11 @@ static NSString *const FWHideAllPopupViewNotification = @"FWHideAllPopupViewNoti
 @property (nonatomic, strong) UIView                    *attachedView;
 
 /**
+ 弹窗真正的frame
+ */
+@property (nonatomic, assign) CGRect finalFrame;
+
+/**
  可设置属性
  */
 @property (nonatomic, strong) FWPopupBaseViewProperty   *vProperty;
@@ -163,6 +168,13 @@ static NSString *const FWHideAllPopupViewNotification = @"FWHideAllPopupViewNoti
  遮罩层被单击，主要用来给子类重写
  */
 - (void)clicedMaskView;
+
+/**
+ 获取当前视图AnchorPoint
+
+ @return CGPoint
+ */
+- (CGPoint)obtainAnchorPoint;
 
 @end
 

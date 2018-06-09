@@ -10,6 +10,7 @@
 #import "FWCustomView.h"
 #import "GuideMaskTestVC.h"
 #import "FWAreaPickerView.h"
+#import "FWPanPopupView.h"
 
 @interface ViewController ()
 
@@ -72,7 +73,7 @@
             break;
         case 1:
         {
-            FWCustomView *customView = [[FWCustomView alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height * 0.4)];
+            FWPanPopupView *customView = [[FWPanPopupView alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height * 0.4)];
             
             FWPopupBaseViewProperty *property = [FWPopupBaseViewProperty manager];
             property.popupAlignment = FWPopupAlignmentTopCenter;
@@ -122,7 +123,7 @@
             
         case 4:
         {
-            FWCustomView *customView = [[FWCustomView alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width * 0.6, [UIScreen mainScreen].bounds.size.height)];
+            FWPanPopupView *customView = [[FWPanPopupView alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width * 0.6, [UIScreen mainScreen].bounds.size.height)];
             
             FWPopupBaseViewProperty *property = [FWPopupBaseViewProperty manager];
             property.popupAlignment = FWPopupAlignmentLeftCenter;
@@ -138,14 +139,14 @@
             break;
         case 5:
         {
-            FWCustomView *customView = [[FWCustomView alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width * 0.4, [UIScreen mainScreen].bounds.size.height * 0.5)];
+            FWPanPopupView *customView = [[FWPanPopupView alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width * 0.5, [UIScreen mainScreen].bounds.size.height)];
             
             FWPopupBaseViewProperty *property = [FWPopupBaseViewProperty manager];
             property.popupAlignment = FWPopupAlignmentLeftCenter;
             property.popupAnimationStyle = FWPopupAnimationStyleFrame;
             property.maskViewColor = [UIColor colorWithWhite:0 alpha:0.5];
             property.touchWildToHide = @"1";
-            property.popupEdgeInsets = UIEdgeInsetsMake(0, 0, 0, 0);
+            property.popupEdgeInsets = UIEdgeInsetsMake(0, 64, 0, 0);
             property.animationDuration = 0.3;
             customView.vProperty = property;
             
@@ -154,7 +155,7 @@
             break;
         case 6:
         {
-            FWCustomView *customView = [[FWCustomView alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width * 0.4, [UIScreen mainScreen].bounds.size.height * 0.5)];
+            FWPanPopupView *customView = [[FWPanPopupView alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width * 0.4, [UIScreen mainScreen].bounds.size.height * 0.5)];
             
             FWPopupBaseViewProperty *property = [FWPopupBaseViewProperty manager];
             property.popupAlignment = FWPopupAlignmentLeftCenter;
@@ -221,7 +222,7 @@
             
         case 10:
         {
-            FWCustomView *customView = [[FWCustomView alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width * 0.6, [UIScreen mainScreen].bounds.size.height)];
+            FWPanPopupView *customView = [[FWPanPopupView alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width * 0.6, [UIScreen mainScreen].bounds.size.height)];
             
             FWPopupBaseViewProperty *property = [FWPopupBaseViewProperty manager];
             property.popupAlignment = FWPopupAlignmentRightCenter;
@@ -237,7 +238,7 @@
             break;
         case 11:
         {
-            FWCustomView *customView = [[FWCustomView alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width * 0.4, [UIScreen mainScreen].bounds.size.height * 0.5)];
+            FWPanPopupView *customView = [[FWPanPopupView alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width * 0.5, [UIScreen mainScreen].bounds.size.height)];
             
             FWPopupBaseViewProperty *property = [FWPopupBaseViewProperty manager];
             property.popupAlignment = FWPopupAlignmentRightCenter;

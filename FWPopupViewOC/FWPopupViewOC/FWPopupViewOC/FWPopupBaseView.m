@@ -32,10 +32,11 @@
  当前frame值是否被设置过了
  */
 @property (nonatomic, assign) BOOL haveSetFrame;
+
 /**
- 弹窗真正的frame
+ 记录弹窗弹起前keywindow
  */
-@property (nonatomic, assign) CGRect finalFrame;
+@property (nonatomic, strong) UIWindow *originKeyWindow;
 
 @end
 
@@ -92,6 +93,8 @@
         self.attachedView = FWPopupWindow.sharedWindow.attachView;
     }
     
+    self.originKeyWindow = [[UIApplication sharedApplication] keyWindow];
+    
     if (self.vProperty.maskViewColor != nil) {
         self.attachedView.dimMaskViewColor = self.vProperty.maskViewColor;
     }
@@ -126,7 +129,6 @@
     if (self.withKeyboard) {
         [self showKeyboard];
     }
-    
 }
 
 /**
@@ -169,6 +171,7 @@
         UIScrollView *view = (UIScrollView *)self.attachedView;
         view.scrollEnabled = self.originScrollEnabled;
     }
+    [self.originKeyWindow makeKeyWindow];
 }
 
 + (void)hideAll
@@ -411,8 +414,8 @@
         if (self.vProperty.popupArrowStyle == FWPopupArrowStyleNone) {
             tmpX = self.vProperty.popupArrowVertexScaleX;
         } else {
-            CGFloat arrowVertexX = (self.frame.size.width - self.vProperty.popupArrowSize.width) *  self.vProperty.popupArrowVertexScaleX + self.vProperty.popupArrowSize.width / 2;
-            tmpX = arrowVertexX / self.frame.size.width;
+            CGFloat arrowVertexX = (self.finalFrame.size.width - self.vProperty.popupArrowSize.width) *  self.vProperty.popupArrowVertexScaleX + self.vProperty.popupArrowSize.width / 2;
+            tmpX = arrowVertexX / self.finalFrame.size.width;
         }
         tmpY = 0;
     }
@@ -426,8 +429,8 @@
         if (self.vProperty.popupArrowStyle == FWPopupArrowStyleNone) {
             tmpX = self.vProperty.popupArrowVertexScaleX;
         } else {
-            CGFloat arrowVertexX = (self.frame.size.width - self.vProperty.popupArrowSize.width) *  self.vProperty.popupArrowVertexScaleX + self.vProperty.popupArrowSize.width / 2;
-            tmpX = arrowVertexX / self.frame.size.width;
+            CGFloat arrowVertexX = (self.finalFrame.size.width - self.vProperty.popupArrowSize.width) *  self.vProperty.popupArrowVertexScaleX + self.vProperty.popupArrowSize.width / 2;
+            tmpX = arrowVertexX / self.finalFrame.size.width;
         }
         tmpY = 1;
     }
