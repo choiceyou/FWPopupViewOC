@@ -146,7 +146,7 @@
             property.popupAnimationStyle = FWPopupAnimationStyleFrame;
             property.maskViewColor = [UIColor colorWithWhite:0 alpha:0.5];
             property.touchWildToHide = @"1";
-            property.popupEdgeInsets = UIEdgeInsetsMake(0, 64, 0, 0);
+            property.popupEdgeInsets = UIEdgeInsetsMake(0, 0, 0, 0);
             property.animationDuration = 0.3;
             customView.vProperty = property;
             
