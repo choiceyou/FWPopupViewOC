@@ -585,7 +585,7 @@
 
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch
 {
-    return [touch.view isMemberOfClass:[self.attachedView.dimMaskView class]];
+    return touch.view == self.attachedView.dimMaskView;
 }
 
 - (void)clicedMaskView

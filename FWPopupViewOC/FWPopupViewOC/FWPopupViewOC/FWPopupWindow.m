@@ -74,7 +74,7 @@
 
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch
 {
-    return [touch.view isMemberOfClass:[self.attachView.dimMaskView class]];
+    return touch.view == self.attachView.dimMaskView;
 }
 
 - (UIView *)attachView
