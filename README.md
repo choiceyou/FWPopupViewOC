@@ -21,8 +21,12 @@ pod 'FWPopupViewOC'
 • v2.1.0 ：
   1.弹窗基类（FWPopupBaseView）中增加让多余部分的遮罩层变为无色属性：shouldClearSpilthMask；
   2.新增新手引导弹窗：FWGuideMaskView；
+  
 • v2.1.1 ：
   1.新增拖动关闭的弹窗基类：FWPanPopupView；
+  
+• v2.1.2 ：
+  1.修复点击非遮罩层视图会显示的问题；
 ```
 
 
