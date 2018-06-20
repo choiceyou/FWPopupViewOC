@@ -16,6 +16,10 @@
 @property (nonatomic, copy) FWPopupBlock showAnimation;
 @property (nonatomic, copy) FWPopupBlock hideAnimation;
 /**
+ 弹窗真正的frame
+ */
+@property (nonatomic, assign) CGRect finalFrame;
+/**
  记录遮罩层设置前的颜色
  */
 @property (nonatomic, strong) UIColor *originMaskViewColor;
@@ -449,6 +453,8 @@
 {
     if (!self.haveSetFrame)
     {
+        self.haveSetFrame = YES;
+        
         CGRect tmpFrame = self.frame;
         switch (self.vProperty.popupAlignment)
         {
@@ -627,6 +633,11 @@
 - (BOOL)visible
 {
     return !(self.attachedView.dimMaskView.alpha == 0);
+}
+
+- (CGRect)realFrame
+{
+    return self.finalFrame;
 }
 
 @end

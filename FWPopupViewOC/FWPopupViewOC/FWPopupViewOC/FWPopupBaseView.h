@@ -117,7 +117,7 @@ static NSString *const FWHideAllPopupViewNotification = @"FWHideAllPopupViewNoti
 /**
  弹窗真正的frame
  */
-@property (nonatomic, assign) CGRect finalFrame;
+@property (nonatomic, assign, readonly) CGRect          realFrame;
 
 /**
  可设置属性
@@ -179,6 +179,8 @@ static NSString *const FWHideAllPopupViewNotification = @"FWHideAllPopupViewNoti
 @end
 
 
+
+#pragma mark - ======================= 可配置属性 =======================
 
 @interface FWPopupBaseViewProperty: NSObject
 

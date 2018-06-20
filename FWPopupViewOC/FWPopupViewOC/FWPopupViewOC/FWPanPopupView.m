@@ -94,7 +94,7 @@
     {
         if (self.panGestureDirection == FWPopupAlignmentLeft)
         {
-            translatedPoint.x = MAX(translatedPoint.x, (self.panGestureOrigin.x-self.finalFrame.size.width));
+            translatedPoint.x = MAX(translatedPoint.x, (self.panGestureOrigin.x-self.realFrame.size.width));
         }
         else
         {
@@ -110,13 +110,13 @@
         else
         {
             translatedPoint.x = MAX(translatedPoint.x, self.panGestureOrigin.x);
-            translatedPoint.x = MIN(translatedPoint.x, CGRectGetMaxX(self.finalFrame));
+            translatedPoint.x = MIN(translatedPoint.x, CGRectGetMaxX(self.realFrame));
         }
     }
     
     if (gesture.state == UIGestureRecognizerStateEnded)
     {
-        if (fabs(translatedPoint.x - self.panGestureOrigin.x) > self.finalFrame.size.width/3)
+        if (fabs(translatedPoint.x - self.panGestureOrigin.x) > self.realFrame.size.width/3)
         {
             [self hide];
         }
@@ -126,7 +126,7 @@
                 
                 if (self.vProperty.popupAnimationStyle == FWPopupAnimationStylePosition || self.vProperty.popupAnimationStyle == FWPopupAnimationStyleFrame)
                 {
-                    self.frame = self.finalFrame;
+                    self.frame = self.realFrame;
                 }
                 else
                 {
@@ -147,17 +147,17 @@
         else if (self.vProperty.popupAnimationStyle == FWPopupAnimationStyleFrame)
         {
             CGRect tmpFrame = self.frame;
-            tmpFrame.size.width = self.finalFrame.size.width - fabs(self.panGestureOrigin.x - translatedPoint.x);
+            tmpFrame.size.width = self.realFrame.size.width - fabs(self.panGestureOrigin.x - translatedPoint.x);
             if (self.viewShowedDirection == FWPopupAlignmentRight)  // 视图弹窗方向：向右的情况
             {
-                tmpFrame.origin.x =  self.finalFrame.origin.x + (translatedPoint.x - self.panGestureOrigin.x);
+                tmpFrame.origin.x =  self.realFrame.origin.x + (translatedPoint.x - self.panGestureOrigin.x);
             }
             self.frame = tmpFrame;
         }
         else if (self.vProperty.popupAnimationStyle == FWPopupAnimationStyleScale || self.vProperty.popupAnimationStyle == FWPopupAnimationStyleScale3D) // 缩放动画/3D缩放动画
         {
             self.layer.anchorPoint = [self obtainAnchorPoint];
-            CGFloat scale = (self.finalFrame.size.width - fabs(translatedPoint.x - self.panGestureOrigin.x)) / self.finalFrame.size.width;
+            CGFloat scale = (self.realFrame.size.width - fabs(translatedPoint.x - self.panGestureOrigin.x)) / self.realFrame.size.width;
             self.transform = CGAffineTransformMakeScale(scale, scale);
         }
     }
@@ -183,7 +183,7 @@
     {
         if (self.panGestureDirection == FWPopupAlignmentTop)
         {
-            translatedPoint.y = MAX(translatedPoint.y, (self.panGestureOrigin.y-self.finalFrame.size.height));
+            translatedPoint.y = MAX(translatedPoint.y, (self.panGestureOrigin.y-self.realFrame.size.height));
         }
         else
         {
@@ -199,13 +199,13 @@
         else
         {
             translatedPoint.y = MAX(translatedPoint.y, self.panGestureOrigin.y);
-            translatedPoint.y = MIN(translatedPoint.y, CGRectGetMaxY(self.finalFrame));
+            translatedPoint.y = MIN(translatedPoint.y, CGRectGetMaxY(self.realFrame));
         }
     }
     
     if (gesture.state == UIGestureRecognizerStateEnded)
     {
-        if (fabs(translatedPoint.y - self.panGestureOrigin.y) > self.finalFrame.size.height/3)
+        if (fabs(translatedPoint.y - self.panGestureOrigin.y) > self.realFrame.size.height/3)
         {
             [self hide];
         }
@@ -215,7 +215,7 @@
                 
                 if (self.vProperty.popupAnimationStyle == FWPopupAnimationStylePosition || self.vProperty.popupAnimationStyle == FWPopupAnimationStyleFrame)
                 {
-                    self.frame = self.finalFrame;
+                    self.frame = self.realFrame;
                 }
                 else
                 {
@@ -236,17 +236,17 @@
         else if (self.vProperty.popupAnimationStyle == FWPopupAnimationStyleFrame)
         {
             CGRect tmpFrame = self.frame;
-            tmpFrame.size.height = self.finalFrame.size.height - fabs(self.panGestureOrigin.y - translatedPoint.y);
+            tmpFrame.size.height = self.realFrame.size.height - fabs(self.panGestureOrigin.y - translatedPoint.y);
             if (self.viewShowedDirection == FWPopupAlignmentBottom)  // 视图弹窗方向：向下的情况
             {
-                tmpFrame.origin.y =  self.finalFrame.origin.y + (translatedPoint.y - self.panGestureOrigin.y);
+                tmpFrame.origin.y =  self.realFrame.origin.y + (translatedPoint.y - self.panGestureOrigin.y);
             }
             self.frame = tmpFrame;
         }
         else if (self.vProperty.popupAnimationStyle == FWPopupAnimationStyleScale || self.vProperty.popupAnimationStyle == FWPopupAnimationStyleScale3D) // 缩放动画/3D缩放动画
         {
             self.layer.anchorPoint = [self obtainAnchorPoint];
-            CGFloat scale = (self.finalFrame.size.height - fabs(translatedPoint.y - self.panGestureOrigin.y)) / self.finalFrame.size.height;
+            CGFloat scale = (self.realFrame.size.height - fabs(translatedPoint.y - self.panGestureOrigin.y)) / self.realFrame.size.height;
             self.transform = CGAffineTransformMakeScale(scale, scale);
         }
     }

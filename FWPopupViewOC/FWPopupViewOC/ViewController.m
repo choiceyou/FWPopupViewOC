@@ -11,10 +11,12 @@
 #import "GuideMaskTestVC.h"
 #import "FWAreaPickerView.h"
 #import "FWPanPopupView.h"
+#import "FWCustomView2.h"
 
 @interface ViewController ()
 
 @property (nonatomic, strong) NSArray *titleArray;
+@property (nonatomic, strong) FWCustomView2 *customView2;
 
 @end
 
@@ -28,6 +30,11 @@
     
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"cellId"];
     self.tableView.estimatedRowHeight = 44.0;
+    
+    // 相关属性可以放FWCustomView2里面，注意这边不需要 addSubview 操作，因为弹窗是默认放在window上面的
+    self.customView2 = [[FWCustomView2 alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width * 0.6, [UIScreen mainScreen].bounds.size.height * 0.3)];
+    // 当然，也可以手动修改弹窗放置在某一个view上面
+    //    self.customView2.attachedView = self.view;
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -57,22 +64,13 @@
     switch (indexPath.row) {
         case 0:
         {
-            FWCustomView *customView = [[FWCustomView alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width * 0.6, [UIScreen mainScreen].bounds.size.height * 0.3)];
-            
-            FWPopupBaseViewProperty *property = [FWPopupBaseViewProperty manager];
-            property.popupAlignment = FWPopupAlignmentCenter;
-            property.popupAnimationStyle = FWPopupAnimationStyleScale;
-            property.maskViewColor = [UIColor colorWithWhite:0 alpha:0.3];
-            property.touchWildToHide = @"1";
-            property.popupEdgeInsets = UIEdgeInsetsMake(0, 0, 0, 0);
-            property.animationDuration = 0.2;
-            customView.vProperty = property;
-            
-            [customView show];
+            // 显示弹窗时相当简单，只需要调用 show 方法即可
+            [self.customView2 show];
         }
             break;
         case 1:
         {
+            // 这边演示可拖拽的弹窗，非常适合上下左右侧滑菜单的实现
             FWPanPopupView *customView = [[FWPanPopupView alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height * 0.4)];
             
             FWPopupBaseViewProperty *property = [FWPopupBaseViewProperty manager];
