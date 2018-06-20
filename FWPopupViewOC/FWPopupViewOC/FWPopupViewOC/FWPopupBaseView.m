@@ -200,7 +200,13 @@
         
         __strong typeof(self) strongSelf = weakSelf;
         
-        if (strongSelf.superview == nil) {
+        if (strongSelf.superview == nil)
+        {
+            // 保证前一次弹窗销毁完毕
+            for (UIView *view in strongSelf.attachedView.dimMaskView.subviews)
+            {
+                [view removeFromSuperview];
+            }
             [strongSelf.attachedView.dimMaskView addSubview:strongSelf];
             
             [strongSelf setupFrame];
