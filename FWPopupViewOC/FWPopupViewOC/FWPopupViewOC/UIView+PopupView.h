@@ -17,6 +17,12 @@
 
 #import <UIKit/UIKit.h>
 
+
+// weakself strongself
+#define FWPWeakify(o)           __weak   typeof(self) fwwo = o;
+#define FWPStrongify(o)         __strong typeof(self) o = fwwo;
+
+
 @interface UIView (PopupView)
 
 @property (nonatomic, strong, readonly) UIView      *dimMaskView;

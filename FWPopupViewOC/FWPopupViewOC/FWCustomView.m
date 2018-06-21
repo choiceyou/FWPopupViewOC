@@ -10,6 +10,11 @@
 
 @implementation FWCustomView
 
+- (void)dealloc
+{
+    NSLog(@"111111111111111");
+}
+
 - (instancetype)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
