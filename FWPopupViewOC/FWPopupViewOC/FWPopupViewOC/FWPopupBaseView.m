@@ -56,25 +56,45 @@
     }
 }
 
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+        [self setupParams];
+    }
+    return self;
+}
+
 - (instancetype)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
     if (self) {
-        
-        self.backgroundColor = [UIColor whiteColor];
-        
-        _attachedView = [FWPopupWindow sharedWindow].attachView;
-        
-        _originMaskViewColor = self.attachedView.dimMaskViewColor;
-        _originTouchWildToHide = [FWPopupWindow sharedWindow].touchWildToHide;
-        
-        self.showAnimation = [self showCustomAnimation];
-        self.hideAnimation = [self hideCustomAnimation];
-        
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(notifyHideAll:) name:FWHideAllPopupViewNotification object:nil];
+        [self setupParams];
     }
     return self;
 }
+
+- (void)awakeFromNib
+{
+    [super awakeFromNib];
+    [self setupParams];
+}
+
+- (void)setupParams
+{
+    self.backgroundColor = [UIColor whiteColor];
+    
+    _attachedView = [FWPopupWindow sharedWindow].attachView;
+    
+    _originMaskViewColor = self.attachedView.dimMaskViewColor;
+    _originTouchWildToHide = [FWPopupWindow sharedWindow].touchWildToHide;
+    
+    self.showAnimation = [self showCustomAnimation];
+    self.hideAnimation = [self hideCustomAnimation];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(notifyHideAll:) name:FWHideAllPopupViewNotification object:nil];
+}
+
 
 #pragma mark - ----------------------- 显示、隐藏 -----------------------
 
