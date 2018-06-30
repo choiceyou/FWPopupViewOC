@@ -56,15 +56,6 @@
     }
 }
 
-- (instancetype)init
-{
-    self = [super init];
-    if (self) {
-        [self setupParams];
-    }
-    return self;
-}
-
 - (instancetype)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
@@ -233,37 +224,18 @@
             
             if (self.vProperty.popupAnimationStyle == FWPopupAnimationStylePosition) // 位移动画
             {
-                CABasicAnimation *baseAnimation = [CABasicAnimation animationWithKeyPath:@"position"];
-                
-                FWPopupAlignment alignment = self.vProperty.popupAlignment;
-                if (alignment == FWPopupAlignmentTop || alignment == FWPopupAlignmentTopCenter || alignment == FWPopupAlignmentTopLeft || alignment == FWPopupAlignmentTopRight || alignment == FWPopupAlignmentCenter)
-                {
-                    baseAnimation.fromValue = [NSValue valueWithCGPoint:CGPointMake(self.frame.origin.x + self.frame.size.width/2, self.frame.origin.y - self.frame.size.height/2)];
-                }
-                else if (alignment == FWPopupAlignmentLeft || alignment == FWPopupAlignmentLeftCenter)
-                {
-                    baseAnimation.fromValue = [NSValue valueWithCGPoint:CGPointMake(self.frame.origin.x - self.frame.size.width/2, self.frame.origin.y + self.frame.size.height/2)];
-                }
-                else if (alignment == FWPopupAlignmentBottom || alignment == FWPopupAlignmentBottomCenter || alignment == FWPopupAlignmentBottomLeft || alignment == FWPopupAlignmentBottomRight)
-                {
-                    baseAnimation.fromValue = [NSValue valueWithCGPoint:CGPointMake(self.frame.origin.x + self.frame.size.width/2, self.attachedView.frame.size.height + self.frame.size.height/2)];
-                }
-                else if (alignment == FWPopupAlignmentRight || alignment == FWPopupAlignmentRightCenter)
-                {
-                    baseAnimation.fromValue = [NSValue valueWithCGPoint:CGPointMake(self.attachedView.frame.size.width + self.frame.size.width/2, self.frame.origin.y + self.frame.size.height/2)];
-                }
-                baseAnimation.toValue = [NSValue valueWithCGPoint:CGPointMake(self.frame.origin.x + self.frame.size.width/2, self.frame.origin.y + self.frame.size.height/2)];
-                baseAnimation.duration = self.vProperty.animationDuration;
-                [self.layer addAnimation:baseAnimation forKey:@"positionAnimation"];
-                
+                [self positionAnimationChangeFrame];
             }
             else if (self.vProperty.popupAnimationStyle == FWPopupAnimationStyleScale || self.vProperty.popupAnimationStyle == FWPopupAnimationStyleScale3D) // 缩放动画/3D缩放动画
             {
                 self.layer.anchorPoint = [self obtainAnchorPoint];
                 self.frame = self.finalFrame;
-                if (self.vProperty.popupAnimationStyle == FWPopupAnimationStyleScale) {
+                if (self.vProperty.popupAnimationStyle == FWPopupAnimationStyleScale)
+                {
                     self.transform = self.vProperty.transform;
-                } else {
+                }
+                else
+                {
                     self.layer.transform = self.vProperty.transform3D;
                 }
             }
@@ -295,34 +267,57 @@
             
             [self layoutIfNeeded];
             
-            [UIView animateWithDuration:self.vProperty.animationDuration delay:0.0 options:(UIViewAnimationOptionCurveLinear | UIViewAnimationOptionBeginFromCurrentState) animations:^{
-                
-                switch (self.vProperty.popupAnimationStyle) {
-                    case FWPopupAnimationStylePosition:
-                        break;
-                    case FWPopupAnimationStyleScale:
-                        self.transform = CGAffineTransformIdentity;
-                        break;
-                    case FWPopupAnimationStyleScale3D:
-                        self.layer.transform = CATransform3DIdentity;
-                        break;
-                    default:
-                        self.frame = self.finalFrame;
-                        break;
-                }
-                
-                [self.superview layoutIfNeeded];
-                
-            } completion:^(BOOL finished) {
-                
-                if (self.popupCompletionBlock != nil) {
-                    self.popupCompletionBlock(self, YES);
-                }
-                
-            }];
+            if (self.vProperty.usingSpringWithDamping >= 0 && self.vProperty.usingSpringWithDamping <= 1)
+            {
+                [UIView animateWithDuration:self.vProperty.animationDuration delay:0.0 usingSpringWithDamping:self.vProperty.usingSpringWithDamping initialSpringVelocity:self.vProperty.initialSpringVelocity options:(UIViewAnimationOptionCurveLinear | UIViewAnimationOptionBeginFromCurrentState) animations:^{
+                    
+                    [self showAnimationDuration];
+                    
+                } completion:^(BOOL finished) {
+                    
+                    if (self.popupCompletionBlock != nil) {
+                        self.popupCompletionBlock(self, YES);
+                    }
+                    
+                }];
+            }
+            else
+            {
+                [UIView animateWithDuration:self.vProperty.animationDuration delay:0.0 options:(UIViewAnimationOptionCurveLinear | UIViewAnimationOptionBeginFromCurrentState) animations:^{
+                    
+                    [self showAnimationDuration];
+                    
+                } completion:^(BOOL finished) {
+                    
+                    if (self.popupCompletionBlock != nil) {
+                        self.popupCompletionBlock(self, YES);
+                    }
+                    
+                }];
+            }
         }
     };
     return popupBlock;
+}
+
+- (void)showAnimationDuration
+{
+    switch (self.vProperty.popupAnimationStyle) {
+        case FWPopupAnimationStylePosition:
+            self.frame = self.finalFrame;
+            break;
+        case FWPopupAnimationStyleScale:
+            self.transform = CGAffineTransformIdentity;
+            break;
+        case FWPopupAnimationStyleScale3D:
+            self.layer.transform = CATransform3DIdentity;
+            break;
+        default:
+            self.frame = self.finalFrame;
+            break;
+    }
+    
+    [self.superview layoutIfNeeded];
 }
 
 - (FWPopupBlock)hideCustomAnimation
@@ -335,25 +330,7 @@
             
             if (self.vProperty.popupAnimationStyle == FWPopupAnimationStylePosition) // 位移动画
             {
-                CGRect tmpFrame = self.frame;
-                FWPopupAlignment alignment = self.vProperty.popupAlignment;
-                if (alignment == FWPopupAlignmentTop || alignment == FWPopupAlignmentTopCenter || alignment == FWPopupAlignmentTopLeft || alignment == FWPopupAlignmentTopRight || alignment == FWPopupAlignmentCenter)
-                {
-                    tmpFrame.origin.y = -(self.frame.origin.y + self.frame.size.height);
-                }
-                else if (alignment == FWPopupAlignmentLeft || alignment == FWPopupAlignmentLeftCenter)
-                {
-                    tmpFrame.origin.x = -(self.frame.origin.x + self.frame.size.width);
-                }
-                else if (alignment == FWPopupAlignmentBottom || alignment == FWPopupAlignmentBottomCenter || alignment == FWPopupAlignmentBottomLeft || alignment == FWPopupAlignmentBottomRight)
-                {
-                    tmpFrame.origin.y = self.attachedView.frame.size.height;
-                }
-                else if (alignment == FWPopupAlignmentRight || alignment == FWPopupAlignmentRightCenter)
-                {
-                    tmpFrame.origin.x = self.attachedView.frame.size.width;
-                }
-                self.frame = tmpFrame;
+                [self positionAnimationChangeFrame];
             }
             else if (self.vProperty.popupAnimationStyle == FWPopupAnimationStyleScale || self.vProperty.popupAnimationStyle == FWPopupAnimationStyleScale3D) // 缩放动画/3D缩放动画
             {
@@ -425,6 +402,29 @@
         }];
     };
     return popupBlock;
+}
+
+- (void)positionAnimationChangeFrame
+{
+    CGRect tmpFrame = self.frame;
+    FWPopupAlignment alignment = self.vProperty.popupAlignment;
+    if (alignment == FWPopupAlignmentTop || alignment == FWPopupAlignmentTopCenter || alignment == FWPopupAlignmentTopLeft || alignment == FWPopupAlignmentTopRight || alignment == FWPopupAlignmentCenter)
+    {
+        tmpFrame.origin.y = -(self.frame.origin.y + self.frame.size.height);
+    }
+    else if (alignment == FWPopupAlignmentLeft || alignment == FWPopupAlignmentLeftCenter)
+    {
+        tmpFrame.origin.x = -(self.frame.origin.x + self.frame.size.width);
+    }
+    else if (alignment == FWPopupAlignmentBottom || alignment == FWPopupAlignmentBottomCenter || alignment == FWPopupAlignmentBottomLeft || alignment == FWPopupAlignmentBottomRight)
+    {
+        tmpFrame.origin.y = self.attachedView.frame.size.height;
+    }
+    else if (alignment == FWPopupAlignmentRight || alignment == FWPopupAlignmentRightCenter)
+    {
+        tmpFrame.origin.x = self.attachedView.frame.size.width;
+    }
+    self.frame = tmpFrame;
 }
 
 - (CGPoint)obtainAnchorPoint
@@ -718,6 +718,8 @@
     
     self.popupEdgeInsets = UIEdgeInsetsMake(0, 0, 0, 0);
     self.animationDuration = 0.2;
+    self.usingSpringWithDamping = -1;
+    self.initialSpringVelocity = 5;
     
     self.transform3D = CATransform3DMakeScale(1.2, 1.2, 1.0);
     self.transform = CGAffineTransformMakeScale(0.01, 0.01);

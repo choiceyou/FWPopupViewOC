@@ -304,6 +304,16 @@ static NSString *const FWHideAllPopupViewNotification = @"FWHideAllPopupViewNoti
 @property (nonatomic, assign) NSTimeInterval animationDuration;
 
 /**
+ 阻尼系数，范围：0.0f~1.0f，数值越小「弹簧」的振动效果越明显。默认：-1，表示没有「弹簧」效果
+ */
+@property (nonatomic, assign) CGFloat usingSpringWithDamping;
+
+/**
+ 初始速率，数值越大一开始移动越快，默认为：5
+ */
+@property (nonatomic, assign) CGFloat initialSpringVelocity;
+
+/**
  3D放射动画（当且仅当：popupAnimationStyle == .scale3D 时有效）
  */
 @property (nonatomic, assign) CATransform3D transform3D;

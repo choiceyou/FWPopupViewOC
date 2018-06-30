@@ -170,15 +170,16 @@
             
         case 7:
         {
-            FWCustomView *customView = [[FWCustomView alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height * 0.4)];
+            FWCustomView *customView = [[FWCustomView alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width-20, [UIScreen mainScreen].bounds.size.height * 0.4)];
             
             FWPopupBaseViewProperty *property = [FWPopupBaseViewProperty manager];
             property.popupAlignment = FWPopupAlignmentBottomCenter;
             property.popupAnimationStyle = FWPopupAnimationStylePosition;
             property.maskViewColor = [UIColor colorWithWhite:0 alpha:0.5];
             property.touchWildToHide = @"1";
-            property.popupEdgeInsets = UIEdgeInsetsMake(0, 0, 0, 0);
-            property.animationDuration = 0.2;
+            property.popupEdgeInsets = UIEdgeInsetsMake(0, 0, 10, 0);
+            property.animationDuration = 0.5;
+            property.usingSpringWithDamping = 0.7;
             customView.vProperty = property;
             
             [customView show];
