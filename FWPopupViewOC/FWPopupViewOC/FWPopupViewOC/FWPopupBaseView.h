@@ -79,23 +79,47 @@ typedef NS_ENUM(NSInteger, FWPopupArrowStyle) {
     FWPopupArrowStyleTriangle,
 };
 
+/**
+ 弹窗状态
+
+ - FWPopupStateUnKnow: 不知
+ - FWPopupStateWillAppear: 将要显示
+ - FWPopupStateDidAppear: 已经显示
+ - FWPopupStateWillDisappear: 将要隐藏
+ - FWPopupStateDidDisappear: 已经隐藏
+ */
+typedef NS_ENUM(NSInteger, FWPopupState) {
+    FWPopupStateUnKnow,
+    FWPopupStateWillAppear,
+    FWPopupStateDidAppear,
+    FWPopupStateWillDisappear,
+    FWPopupStateDidDisappear,
+};
+
+
 @class FWPopupBaseView;
 @class FWPopupBaseViewProperty;
 
 /**
- 显示、隐藏回调
+ 弹窗已经显示回调
 
  @param popupBaseView self
  */
-typedef void(^FWPopupBlock)(FWPopupBaseView *popupBaseView);
+typedef void(^FWPopupDidAppearBlock)(FWPopupBaseView *popupBaseView);
 
 /**
- 显示、隐藏完成回调
+ 弹窗已经隐藏回调
 
  @param popupBaseView self
- @param isShow YES：显示 NO：隐藏
  */
-typedef void(^FWPopupCompletionBlock)(FWPopupBaseView *popupBaseView, BOOL isShow);
+typedef void(^FWPopupDidDisappearBlock)(FWPopupBaseView *popupBaseView);
+
+/**
+ 弹窗状态回调，注意：该回调会走N次
+
+ @param popupBaseView self
+ */
+typedef void(^FWPopupStateBlock)(FWPopupBaseView *popupBaseView, FWPopupState popupState);
 
 /**
  普通无参数回调
@@ -146,11 +170,18 @@ static NSString *const FWHideAllPopupViewNotification = @"FWHideAllPopupViewNoti
 - (void)show;
 
 /**
- 显示
- 
- @param completionBlock 显示、隐藏完成回调
+ 弹窗已经显示
+
+ @param didAppearBlock 弹窗已经显示回调
  */
-- (void)showWithBlock:(FWPopupCompletionBlock)completionBlock;
+- (void)showWithDidAppearBlock:(FWPopupDidAppearBlock)didAppearBlock;
+
+/**
+ 显示：弹窗状态回调，注意：该回调会走N次
+
+ @param stateBlock 弹窗状态回调，注意：该回调会走N次
+ */
+- (void)showWithStateBlock:(FWPopupStateBlock)stateBlock;
 
 /**
  隐藏
@@ -158,11 +189,11 @@ static NSString *const FWHideAllPopupViewNotification = @"FWHideAllPopupViewNoti
 - (void)hide;
 
 /**
- 隐藏
- 
- @param completionBlock 显示、隐藏完成回调
+ 弹窗已经隐藏
+
+ @param didDisappearBlock 弹窗已经隐藏回调
  */
-- (void)hideWithBlock:(FWPopupCompletionBlock)completionBlock;
+- (void)hideWithDidDisappearBlock:(FWPopupDidDisappearBlock)didDisappearBlock;
 
 /**
  遮罩层被单击，主要用来给子类重写
@@ -294,7 +325,7 @@ static NSString *const FWHideAllPopupViewNotification = @"FWHideAllPopupViewNoti
 @property (nonatomic, strong) UIColor *maskViewColor;
 
 /**
- 0表示NO，1表示YES，YES：用户点击外部遮罩层页面可以消失，注意：该参数在弹窗隐藏后，还原为弹窗弹起时的值
+ 0表示NO，1表示YES，YES：用户点击外部遮罩层页面可以隐藏，注意：该参数在弹窗隐藏后，还原为弹窗弹起时的值
  */
 @property (nonatomic, copy) NSString *touchWildToHide;
 

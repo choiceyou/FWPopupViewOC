@@ -69,12 +69,12 @@ static const float kBtnWidth = 50;
     self.areaArray = [citys firstObject][@"area"];
 }
 
-- (void)showWithBlock:(FWPopupCompletionBlock)completionBlock
+- (void)showWithStateBlock:(FWPopupStateBlock)stateBlock
 {
     self.vProperty.popupAlignment = FWPopupAlignmentBottomCenter;
     self.vProperty.touchWildToHide = @"1";
     
-    [super showWithBlock:completionBlock];
+    [super showWithStateBlock:stateBlock];
 }
 
 

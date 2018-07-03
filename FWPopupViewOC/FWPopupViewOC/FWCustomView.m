@@ -12,7 +12,7 @@
 
 - (void)dealloc
 {
-    NSLog(@"111111111111111");
+    NSLog(@"FWCustomView dealloc");
 }
 
 - (instancetype)initWithFrame:(CGRect)frame

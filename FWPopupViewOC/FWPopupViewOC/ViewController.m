@@ -79,10 +79,12 @@
             property.maskViewColor = [UIColor colorWithWhite:0 alpha:0.5];
             property.touchWildToHide = @"1";
             property.popupEdgeInsets = UIEdgeInsetsMake(0, 0, 0, 0);
-            property.animationDuration = 0.2;
+            property.animationDuration = 0.5;
             customView.vProperty = property;
             
-            [customView show];
+            [customView showWithDidAppearBlock:^(FWPopupBaseView *popupBaseView) {
+                NSLog(@"showWithDidAppearBlock");
+            }];
         }
             break;
         case 2:
@@ -99,7 +101,9 @@
             property.shouldClearSpilthMask = YES;
             customView.vProperty = property;
             
-            [customView show];
+            [customView showWithStateBlock:^(FWPopupBaseView *popupBaseView, FWPopupState popupState) {
+                NSLog(@"弹窗当前状态：%ld",(long)popupState);
+            }];
         }
             break;
         case 3:

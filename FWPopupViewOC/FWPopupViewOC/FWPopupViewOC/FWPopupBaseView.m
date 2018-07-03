@@ -10,9 +10,19 @@
 #import "FWPopupWindow.h"
 #import <QuartzCore/QuartzCore.h>
 
+/**
+ 弹窗显示、隐藏回调，内部回调，该回调不对外
+ 
+ @param popupBaseView self
+ */
+typedef void(^FWPopupBlock)(FWPopupBaseView *popupBaseView);
+
+
 @interface FWPopupBaseView()
 
-@property (nonatomic, copy) FWPopupCompletionBlock popupCompletionBlock;
+@property (nonatomic, copy) FWPopupDidAppearBlock popupDidAppearBlock;
+@property (nonatomic, copy) FWPopupDidDisappearBlock popupDidDisappearBlock;
+@property (nonatomic, copy) FWPopupStateBlock popupStateBlock;
 @property (nonatomic, copy) FWPopupBlock showAnimation;
 @property (nonatomic, copy) FWPopupBlock hideAnimation;
 /**
@@ -94,16 +104,34 @@
  */
 - (void)show
 {
-    [self showWithBlock:nil];
+    [self showWithDidAppearBlock:nil];
 }
 
 /**
- 显示
+ 弹窗已经显示
  
- @param completionBlock 显示、隐藏完成回调
+ @param didAppearBlock 弹窗已经显示回调
  */
-- (void)showWithBlock:(FWPopupCompletionBlock)completionBlock
+- (void)showWithDidAppearBlock:(FWPopupDidAppearBlock)didAppearBlock
 {
+    if (didAppearBlock != nil) {
+        self.popupDidAppearBlock = didAppearBlock;
+    }
+    [self showWithStateBlock:nil];
+}
+
+/**
+ 显示：弹窗状态回调，注意：该回调会走N次
+ 
+ @param stateBlock 弹窗状态回调，注意：该回调会走N次
+ */
+- (void)showWithStateBlock:(FWPopupStateBlock)stateBlock
+{
+    if (stateBlock != nil) {
+        self.popupStateBlock = stateBlock;
+        self.popupStateBlock(self, FWPopupStateWillAppear);
+    }
+    
     if (self.attachedView == nil) {
         self.attachedView = FWPopupWindow.sharedWindow.attachView;
     }
@@ -132,10 +160,6 @@
         }
     }
     
-    if (completionBlock != nil) {
-        self.popupCompletionBlock = completionBlock;
-    }
-    
     [self.attachedView showDimMask];
     
     FWPopupBlock showBlock = self.showAnimation;
@@ -151,21 +175,24 @@
  */
 - (void)hide
 {
-    [self hideWithBlock:nil];
+    [self hideWithDidDisappearBlock:nil];
 }
 
 /**
- 隐藏
+ 弹窗已经隐藏
  
- @param completionBlock 显示、隐藏完成回调
+ @param didDisappearBlock 弹窗已经隐藏回调
  */
-- (void)hideWithBlock:(FWPopupCompletionBlock)completionBlock
+- (void)hideWithDidDisappearBlock:(FWPopupDidDisappearBlock)didDisappearBlock
 {
-    self.attachedView.dimMaskAnimationDuration = self.vProperty.animationDuration;
-    
-    if (completionBlock != nil) {
-        self.popupCompletionBlock = completionBlock;
+    if (didDisappearBlock != nil) {
+        self.popupDidDisappearBlock = didDisappearBlock;
     }
+    if (self.popupStateBlock != nil) {
+        self.popupStateBlock(self, FWPopupStateWillDisappear);
+    }
+    
+    self.attachedView.dimMaskAnimationDuration = self.vProperty.animationDuration;
     
     [self.attachedView hideDimMask];
     
@@ -275,8 +302,11 @@
                     
                 } completion:^(BOOL finished) {
                     
-                    if (self.popupCompletionBlock != nil) {
-                        self.popupCompletionBlock(self, YES);
+                    if (self.popupDidAppearBlock != nil) {
+                        self.popupDidAppearBlock(self);
+                    }
+                    if (self.popupStateBlock != nil) {
+                        self.popupStateBlock(self, FWPopupStateDidAppear);
                     }
                     
                 }];
@@ -289,8 +319,11 @@
                     
                 } completion:^(BOOL finished) {
                     
-                    if (self.popupCompletionBlock != nil) {
-                        self.popupCompletionBlock(self, YES);
+                    if (self.popupDidAppearBlock != nil) {
+                        self.popupDidAppearBlock(self);
+                    }
+                    if (self.popupStateBlock != nil) {
+                        self.popupStateBlock(self, FWPopupStateDidAppear);
                     }
                     
                 }];
@@ -370,9 +403,6 @@
             if (finished) {
                 [self removeFromSuperview];
             }
-            if (self.popupCompletionBlock != nil) {
-                self.popupCompletionBlock(self, NO);
-            }
             
             // 还原视图，防止下次动画时出错
             switch (self.vProperty.popupAnimationStyle) {
@@ -398,6 +428,13 @@
                 maskLayer.frame = self.attachedView.bounds;
                 maskLayer.path = path.CGPath;
                 self.attachedView.layer.mask = maskLayer;
+            }
+            
+            if (self.popupDidDisappearBlock != nil) {
+                self.popupDidDisappearBlock(self);
+            }
+            if (self.popupStateBlock != nil) {
+                self.popupStateBlock(self, FWPopupStateDidDisappear);
             }
         }];
     };

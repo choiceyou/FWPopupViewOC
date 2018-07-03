@@ -55,11 +55,11 @@
 }
 
 /**
- 重写父类：显示
+ 重写父类：显示：弹窗状态回调，注意：该回调会走N次
  
- @param completionBlock 显示、隐藏完成回调
+ @param stateBlock 弹窗状态回调，注意：该回调会走N次
  */
-- (void)showWithBlock:(FWPopupCompletionBlock)completionBlock
+- (void)showWithStateBlock:(FWPopupStateBlock)stateBlock
 {
     if (!self.vProperty || ![self.vProperty isMemberOfClass:[FWGuideMaskViewProperty class]]) {
         self.vProperty = [[FWGuideMaskViewProperty alloc] init];
@@ -68,7 +68,7 @@
     self.vProperty.popupAlignment = FWPopupAlignmentCenter;
     self.vProperty.popupAnimationStyle = FWPopupAnimationStyleScale;
     
-    [super showWithBlock:completionBlock];
+    [super showWithStateBlock:stateBlock];
     
     self.frame = self.attachedView.frame;
     
