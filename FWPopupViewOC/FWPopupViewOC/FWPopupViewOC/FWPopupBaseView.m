@@ -430,12 +430,16 @@ typedef void(^FWPopupBlock)(FWPopupBaseView *popupBaseView);
                 self.attachedView.layer.mask = maskLayer;
             }
             
-            if (self.popupDidDisappearBlock != nil) {
-                self.popupDidDisappearBlock(self);
-            }
-            if (self.popupStateBlock != nil) {
-                self.popupStateBlock(self, FWPopupStateDidDisappear);
-            }
+            // 确保销毁完成后再回调
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                if (self.popupDidDisappearBlock != nil) {
+                    self.popupDidDisappearBlock(self);
+                }
+                if (self.popupStateBlock != nil) {
+                    self.popupStateBlock(self, FWPopupStateDidDisappear);
+                }
+            });
+            
         }];
     };
     return popupBlock;
