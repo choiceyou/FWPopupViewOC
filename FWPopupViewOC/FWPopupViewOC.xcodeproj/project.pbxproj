@@ -26,6 +26,7 @@
 		49754ABE20C61DCE009B31CC /* FWGuideMaskView.m in Sources */ = {isa = PBXBuildFile; fileRef = 49754ABD20C61DCE009B31CC /* FWGuideMaskView.m */; };
 		49754AC220C66E91009B31CC /* GuideMaskTestVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 49754AC020C66E91009B31CC /* GuideMaskTestVC.m */; };
 		49754AC320C66E91009B31CC /* GuideMaskTestVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 49754AC120C66E91009B31CC /* GuideMaskTestVC.xib */; };
+		49EA82A321CC6F6F0032A7E8 /* FWPopupRootController.m in Sources */ = {isa = PBXBuildFile; fileRef = 49EA82A221CC6F6F0032A7E8 /* FWPopupRootController.m */; };
 		5B92C65BF9D4BC083B52834F /* Pods_FWPopupViewOC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A0B9C7DA7A4ABE5F87E5ACD5 /* Pods_FWPopupViewOC.framework */; };
 /* End PBXBuildFile section */
 
@@ -85,6 +86,8 @@
 		49754ABF20C66E91009B31CC /* GuideMaskTestVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GuideMaskTestVC.h; sourceTree = "<group>"; };
 		49754AC020C66E91009B31CC /* GuideMaskTestVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GuideMaskTestVC.m; sourceTree = "<group>"; };
 		49754AC120C66E91009B31CC /* GuideMaskTestVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GuideMaskTestVC.xib; sourceTree = "<group>"; };
+		49EA82A121CC6F6F0032A7E8 /* FWPopupRootController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FWPopupRootController.h; sourceTree = "<group>"; };
+		49EA82A221CC6F6F0032A7E8 /* FWPopupRootController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FWPopupRootController.m; sourceTree = "<group>"; };
 		7C11AEB1B069394B0BA25D5D /* libPods-FWPopupViewOCTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-FWPopupViewOCTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A0B9C7DA7A4ABE5F87E5ACD5 /* Pods_FWPopupViewOC.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FWPopupViewOC.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B6526F36B7EAEC1AEA71EDA5 /* libPods-FWPopupViewOCUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-FWPopupViewOCUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -207,6 +210,8 @@
 				4953B48120B7FD06004B87D7 /* FWPopupBaseView.m */,
 				4953B48C20B8152F004B87D7 /* FWPopupWindow.h */,
 				4953B48D20B8152F004B87D7 /* FWPopupWindow.m */,
+				49EA82A121CC6F6F0032A7E8 /* FWPopupRootController.h */,
+				49EA82A221CC6F6F0032A7E8 /* FWPopupRootController.m */,
 				4953B48920B80D4D004B87D7 /* UIView+PopupView.h */,
 				4953B48A20B80D4D004B87D7 /* UIView+PopupView.m */,
 				49754ABC20C61DCE009B31CC /* FWGuideMaskView.h */,
@@ -410,6 +415,7 @@
 				4953B48B20B80D4D004B87D7 /* UIView+PopupView.m in Sources */,
 				4953B44F20B7FC36004B87D7 /* AppDelegate.m in Sources */,
 				4953B48220B7FD06004B87D7 /* FWPopupBaseView.m in Sources */,
+				49EA82A321CC6F6F0032A7E8 /* FWPopupRootController.m in Sources */,
 				496F593620CBAEF400094595 /* FWPanPopupView.m in Sources */,
 				4918FA6420D9DE8500741221 /* FWCustomView2.m in Sources */,
 				4953B48E20B8152F004B87D7 /* FWPopupWindow.m in Sources */,
@@ -581,7 +587,10 @@
 				DEVELOPMENT_TEAM = K4Y22J2KN7;
 				INFOPLIST_FILE = FWPopupViewOC/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.xfg.FWPopupViewOC;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -597,7 +606,10 @@
 				DEVELOPMENT_TEAM = K4Y22J2KN7;
 				INFOPLIST_FILE = FWPopupViewOC/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.xfg.FWPopupViewOC;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -610,7 +622,11 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = FWPopupViewOCTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.xfg.FWPopupViewOCTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -624,7 +640,11 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = FWPopupViewOCTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.xfg.FWPopupViewOCTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -637,7 +657,11 @@
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = FWPopupViewOCUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.xfg.FWPopupViewOCUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -650,7 +674,11 @@
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = FWPopupViewOCUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.xfg.FWPopupViewOCUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
