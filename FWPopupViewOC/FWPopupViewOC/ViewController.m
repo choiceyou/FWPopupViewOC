@@ -82,8 +82,8 @@
             property.animationDuration = 0.5;
             customView.vProperty = property;
             
-            [customView showWithDidAppearBlock:^(FWPopupBaseView *popupBaseView) {
-                NSLog(@"showWithDidAppearBlock");
+            [customView showWithStateBlock:^(FWPopupBaseView *popupBaseView, FWPopupState popupState) {
+                NSLog(@"%ld", (long)popupState);
             }];
         }
             break;
