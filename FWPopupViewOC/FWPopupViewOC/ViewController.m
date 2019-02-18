@@ -33,6 +33,7 @@
     
     // 相关属性可以放FWCustomView2里面，注意这边不需要 addSubview 操作，因为弹窗是默认放在window上面的
     self.customView2 = [[FWCustomView2 alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width * 0.6, [UIScreen mainScreen].bounds.size.height * 0.3)];
+    self.customView2.backgroundColor = [UIColor redColor];
     // 当然，也可以手动修改弹窗放置在某一个view上面
     //    self.customView2.attachedView = self.view;
 }
@@ -89,19 +90,19 @@
             break;
         case 2:
         {
-            FWCustomView *customView = [[FWCustomView alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height * 0.4)];
+            FWCustomView *customView2 = [[FWCustomView alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height * 0.4)];
             
-            FWPopupBaseViewProperty *property = [FWPopupBaseViewProperty manager];
-            property.popupAlignment = FWPopupAlignmentTopCenter;
-            property.popupAnimationStyle = FWPopupAnimationStyleFrame;
-            property.maskViewColor = [UIColor colorWithWhite:0 alpha:0.5];
-            property.touchWildToHide = @"1";
-            property.popupEdgeInsets = UIEdgeInsetsMake(64, 0, 0, 0);
-            property.animationDuration = 0.5;
-            property.shouldClearSpilthMask = YES;
-            customView.vProperty = property;
+            FWPopupBaseViewProperty *property2 = [FWPopupBaseViewProperty manager];
+            property2.popupAlignment = FWPopupAlignmentTopCenter;
+            property2.popupAnimationStyle = FWPopupAnimationStyleFrame;
+            property2.maskViewColor = [UIColor colorWithWhite:0 alpha:0.5];
+            property2.touchWildToHide = @"1";
+            property2.popupEdgeInsets = UIEdgeInsetsMake(64, 0, 0, 0);
+            property2.animationDuration = 0.5;
+            property2.shouldClearSpilthMask = YES;
+            customView2.vProperty = property2;
             
-            [customView showWithStateBlock:^(FWPopupBaseView *popupBaseView, FWPopupState popupState) {
+            [customView2 showWithStateBlock:^(FWPopupBaseView *popupBaseView, FWPopupState popupState) {
                 NSLog(@"弹窗当前状态：%ld",(long)popupState);
             }];
         }

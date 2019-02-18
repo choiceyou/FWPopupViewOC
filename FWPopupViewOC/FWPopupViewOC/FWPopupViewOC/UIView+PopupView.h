@@ -34,4 +34,6 @@
 - (void)showDimMask;
 - (void)hideDimMask;
 
+- (void)resetDimMaskView;
+
 @end

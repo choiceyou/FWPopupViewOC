@@ -21,6 +21,7 @@ static const void *dimMaskAnimatingKey              = &dimMaskAnimatingKey;
 #import "UIView+PopupView.h"
 #import <objc/runtime.h>
 #import "FWPopupWindow.h"
+#import "Masonry.h"
 
 @implementation UIView (PopupView)
 
@@ -93,8 +94,11 @@ static const void *dimMaskAnimatingKey              = &dimMaskAnimatingKey;
     
     if (!dimView)
     {
-        dimView = [[UIView alloc] initWithFrame:self.bounds];
+        dimView = [[UIView alloc] init];
         [self addSubview:dimView];
+        [dimView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.edges.width.height.equalTo(self);
+        }];
         
         dimView.alpha = 0.0f;
         dimView.layer.zPosition = FLT_MAX;
@@ -103,6 +107,11 @@ static const void *dimMaskAnimatingKey              = &dimMaskAnimatingKey;
     objc_setAssociatedObject(self, dimMaskViewKey, dimView, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
     
     return dimView;
+}
+
+- (void)resetDimMaskView
+{
+    objc_setAssociatedObject(self, dimMaskViewKey, nil, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
 - (void)showDimMask

@@ -7,6 +7,7 @@
 //
 
 #import "FWGuideMaskView.h"
+#import "Masonry.h"
 
 @interface FWGuideMaskView()
 
@@ -50,6 +51,8 @@
         self.describeLabel.textColor = [UIColor whiteColor];
         self.describeLabel.font = [UIFont systemFontOfSize:14];
         self.userInteractionEnabled = NO;
+        
+        self.frame = self.attachedView.frame;
     }
     return self;
 }
@@ -69,8 +72,6 @@
     self.vProperty.popupAnimationStyle = FWPopupAnimationStyleScale;
     
     [super showWithStateBlock:stateBlock];
-    
-    self.frame = self.attachedView.frame;
     
     self.currentIndex = 0;
 }

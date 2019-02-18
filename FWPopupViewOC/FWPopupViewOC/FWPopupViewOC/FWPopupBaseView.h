@@ -22,10 +22,6 @@
  自定义弹窗校准位置，注意：这边设置靠置哪边动画就从哪边出来
 
  - FWPopupAlignmentCenter: 中间，默认值
- - FWPopupAlignmentTop: 上
- - FWPopupAlignmentLeft: 左
- - FWPopupAlignmentBottom: 下
- - FWPopupAlignmentRight: 右
  - FWPopupAlignmentTopCenter: 上中
  - FWPopupAlignmentLeftCenter: 左中
  - FWPopupAlignmentBottomCenter: 下中
@@ -37,10 +33,6 @@
  */
 typedef NS_ENUM(NSInteger, FWPopupAlignment) {
     FWPopupAlignmentCenter,
-    FWPopupAlignmentTop,
-    FWPopupAlignmentLeft,
-    FWPopupAlignmentBottom,
-    FWPopupAlignmentRight,
     FWPopupAlignmentTopCenter,
     FWPopupAlignmentLeftCenter,
     FWPopupAlignmentBottomCenter,
@@ -162,6 +154,11 @@ static NSString *const FWHideAllPopupViewNotification = @"FWHideAllPopupViewNoti
  是否有用到键盘
  */
 @property (nonatomic, assign) BOOL                      withKeyboard;
+
+/**
+ 是否不需要设置Frame（当前基类使用Masonry，如果子类不希望该父类重置他的Frame，可以传入true）
+ */
+@property (nonatomic, assign) BOOL                      isNotMakeFrame;
 
 
 /**
@@ -354,7 +351,7 @@ static NSString *const FWHideAllPopupViewNotification = @"FWHideAllPopupViewNoti
 @property (nonatomic, assign) CGAffineTransform transform;
 
 /**
- 是否需要让多余部分的遮罩层变为无色（当弹窗没有任何一条边跟遮罩层的任意一条边重合的时候，就可能会把遮罩层分成几部分，此时看上去就不大美观了，因此可以使用该属性把某些部分设置为无色）
+ 是否需要让多余部分的遮罩层变为无色（当弹窗没有任何一条边跟遮罩层的任意一条边重合的时候，就可能会把遮罩层分成几部分，此时看上去就不大美观了，因此可以使用该属性把某些部分设置为无色）。注意：使用该属性后不支持横竖屏切换，会出现视图显示的问题
  */
 @property (nonatomic, assign) BOOL shouldClearSpilthMask;
 
