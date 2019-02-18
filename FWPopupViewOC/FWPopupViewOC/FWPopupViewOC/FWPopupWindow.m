@@ -49,7 +49,7 @@
 
 - (void)tapGestureAction:(UIGestureRecognizer *)gesture
 {
-    if (!self.dimMaskAnimating)
+    if (!self.attachView.dimMaskAnimating)
     {
         for (UIView *v in [self attachView].dimMaskView.subviews)
         {

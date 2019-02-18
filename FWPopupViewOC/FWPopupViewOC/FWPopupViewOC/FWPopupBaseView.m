@@ -315,6 +315,7 @@ typedef NS_ENUM(NSInteger, FWConstraintsStates) {
         
         [self setupConstraints:FWConstraintsStatesShownAnimation];
         
+        self.attachedView.dimMaskAnimating = YES;
         
         if (self.vProperty.usingSpringWithDamping >= 0 && self.vProperty.usingSpringWithDamping <= 1)
         {
@@ -387,6 +388,8 @@ typedef NS_ENUM(NSInteger, FWConstraintsStates) {
         FWPopupBaseView *willShowingView = [FWPopupWindow sharedWindow].willShowingViews.lastObject;
         [willShowingView showNow];
         [[FWPopupWindow sharedWindow].willShowingViews removeLastObject];
+    } else {
+        self.attachedView.dimMaskAnimating = NO;
     }
 }
 
@@ -403,6 +406,8 @@ typedef NS_ENUM(NSInteger, FWConstraintsStates) {
         FWPStrongify(self)
         
         [self setupConstraints:FWConstraintsStatesHiddenAnimation];
+        
+        self.attachedView.dimMaskAnimating = YES;
         
         [UIView animateWithDuration:self.vProperty.animationDuration delay:0.0 options:(UIViewAnimationOptionCurveLinear | UIViewAnimationOptionBeginFromCurrentState) animations:^{
             
@@ -459,7 +464,7 @@ typedef NS_ENUM(NSInteger, FWConstraintsStates) {
                     }
                 }
                 
-                if (nextShowView.vProperty.shouldClearSpilthMask || [FWPopupWindow sharedWindow].shouldResetDimMaskView) {
+                if (self.vProperty.shouldClearSpilthMask || [FWPopupWindow sharedWindow].shouldResetDimMaskView) {
                     if (nextShowView != nil) {
                         [FWPopupWindow sharedWindow].shouldResetDimMaskView = YES;
                         UIBezierPath *path = [UIBezierPath bezierPathWithRect:self.attachedView.bounds];
@@ -474,6 +479,8 @@ typedef NS_ENUM(NSInteger, FWConstraintsStates) {
                 }
                 
             });
+            
+            self.attachedView.dimMaskAnimating = NO;
         }];
     };
     return popupBlock;

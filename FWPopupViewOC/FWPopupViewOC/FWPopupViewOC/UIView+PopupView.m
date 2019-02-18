@@ -124,7 +124,6 @@ static const void *dimMaskAnimatingKey              = &dimMaskAnimatingKey;
     }
     
     self.dimMaskView.hidden = NO;
-    self.dimMaskAnimating = YES;
     
     if (self == [FWPopupWindow sharedWindow].attachView)
     {
@@ -150,11 +149,6 @@ static const void *dimMaskAnimatingKey              = &dimMaskAnimatingKey;
                          
                      } completion:^(BOOL finished) {
                          
-                         if ( finished )
-                         {
-                             self.dimMaskAnimating = NO;
-                         }
-                         
                      }];
 }
 
@@ -165,7 +159,6 @@ static const void *dimMaskAnimatingKey              = &dimMaskAnimatingKey;
         return;
     }
     
-    self.dimMaskAnimating = YES;
     [UIView animateWithDuration:self.dimMaskAnimationDuration
                           delay:0
                         options:UIViewAnimationOptionCurveLinear | UIViewAnimationOptionBeginFromCurrentState
@@ -177,8 +170,6 @@ static const void *dimMaskAnimatingKey              = &dimMaskAnimatingKey;
                          
                          if (finished)
                          {
-                             self.dimMaskAnimating = NO;
-                             
                              if (self == [FWPopupWindow sharedWindow].attachView)
                              {
                                  [FWPopupWindow sharedWindow].hidden = YES;

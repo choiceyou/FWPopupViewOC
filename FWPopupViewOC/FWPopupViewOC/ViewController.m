@@ -26,7 +26,7 @@
 {
     [super viewDidLoad];
     
-    self.titleArray = @[@"center - scale", @"topCenter - position (支持拖拽关闭弹窗)", @"topCenter - frame", @"topCenter - scale", @"leftCenter - position (支持拖拽关闭弹窗)", @"leftCenter - frame (支持拖拽关闭弹窗)", @"leftCenter - scale (支持拖拽关闭弹窗)", @"bottomCenter - position (「弹簧」振动效果)", @"bottomCenter - frame", @"bottomCenter - scale", @"rightCenter - position (支持拖拽关闭弹窗)", @"rightCenter - frame (支持拖拽关闭弹窗)", @"rightCenter - scale", @"GuideMaskTest", @"AreaPickerTest"];
+    self.titleArray = @[@"center - scale", @"topCenter - position (支持拖拽关闭弹窗)", @"topCenter - frame", @"topCenter - scale", @"leftCenter - position (支持拖拽关闭弹窗)", @"leftCenter - frame (支持拖拽关闭弹窗)", @"leftCenter - scale (支持拖拽关闭弹窗)", @"bottomCenter - position (「弹簧」振动效果)", @"bottomCenter - frame", @"bottomCenter - scale", @"rightCenter - position (支持拖拽关闭弹窗)", @"rightCenter - frame (支持拖拽关闭弹窗)", @"rightCenter - scale", @"GuideMaskTest(不支持横竖屏切换)", @"AreaPickerTest"];
     
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"cellId"];
     self.tableView.estimatedRowHeight = 44.0;
