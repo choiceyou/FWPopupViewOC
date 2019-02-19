@@ -396,9 +396,9 @@ typedef NS_ENUM(NSInteger, FWConstraintsStates) {
     }
     
     if ([FWPopupWindow sharedWindow].willShowingViews.count > 0) {
-        FWPopupBaseView *willShowingView = [FWPopupWindow sharedWindow].willShowingViews.lastObject;
+        FWPopupBaseView *willShowingView = [FWPopupWindow sharedWindow].willShowingViews.firstObject;
         [willShowingView showNow];
-        [[FWPopupWindow sharedWindow].willShowingViews removeLastObject];
+        [[FWPopupWindow sharedWindow].willShowingViews removeObjectAtIndex:0];
     } else {
         self.attachedView.dimMaskAnimating = NO;
     }
