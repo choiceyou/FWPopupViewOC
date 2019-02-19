@@ -4,6 +4,9 @@ use_frameworks!
 
 target 'FWPopupViewOC' do
     
+    # 布局：https://github.com/SnapKit/Masonry
+    pod 'Masonry'
+    
     # 注意：这边引入的两个库都跟我们无关，这边只是测试作用
     
     # 弹窗Swift版本
