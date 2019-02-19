@@ -99,4 +99,12 @@
     return _willShowingViews;
 }
 
+- (NSMutableArray *)needConstraintsViews
+{
+    if (_needConstraintsViews) {
+        _needConstraintsViews = [NSMutableArray array];
+    }
+    return _needConstraintsViews;
+}
+
 @end

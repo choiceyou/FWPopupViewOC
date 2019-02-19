@@ -204,6 +204,15 @@ static NSString *const FWHideAllPopupViewNotification = @"FWHideAllPopupViewNoti
  */
 - (CGPoint)obtainAnchorPoint;
 
+/**
+ 如要初始化视图后要设置当前视图的约束，必须要使用该方法，因为这个方法会提前将当前视图加入父视图，使用该方法有以下几个注意点：
+ 1、使用该方法不支持更换父视图，即不支持修改：attachedView；
+ 2、使用该方法不建议把当前视图设置为成员变量，因为调用隐藏方法时会把当前视图从父视图中移除，调用显示方法后会重新添加到父视图，此时约束就会丢失相对于父视图的那部分；
+
+ @return self
+ */
+- (instancetype)initWithConstraints;
+
 @end
 
 

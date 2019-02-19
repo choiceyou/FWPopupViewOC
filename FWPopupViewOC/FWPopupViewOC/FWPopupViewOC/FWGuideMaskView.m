@@ -134,7 +134,7 @@
     /// 遮罩的路径
     self.maskLayer.path = toPath.CGPath;
     self.maskLayer.fillRule = kCAFillRuleEvenOdd;
-    self.attachedView.layer.mask = self.maskLayer;
+    self.attachedView.dimMaskView.layer.mask = self.maskLayer;
     
     /// 开始移动动画
     CABasicAnimation *anim = [CABasicAnimation animationWithKeyPath:@"path"];

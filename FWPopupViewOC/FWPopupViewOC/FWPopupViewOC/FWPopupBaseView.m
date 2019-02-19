@@ -112,11 +112,23 @@ typedef NS_ENUM(NSInteger, FWConstraintsStates) {
     [self setupParams];
 }
 
+- (instancetype)initWithConstraints
+{
+    self = [super init];
+    if (self) {
+        [self setupParams];
+        [self.attachedView.dimMaskView addSubview:self];
+        self.hidden = YES;
+        [[FWPopupWindow sharedWindow].needConstraintsViews addObject:self];
+    }
+    return self;
+}
+
 - (void)setupParams
 {
     self.backgroundColor = [UIColor whiteColor];
     
-    _attachedView = [FWPopupWindow sharedWindow].attachView;
+    self.attachedView = [FWPopupWindow sharedWindow].attachView;
     
     _originMaskViewColor = self.attachedView.dimMaskViewColor;
     _originTouchWildToHide = [FWPopupWindow sharedWindow].touchWildToHide;
@@ -157,6 +169,9 @@ typedef NS_ENUM(NSInteger, FWConstraintsStates) {
  */
 - (void)showWithStateBlock:(FWPopupStateBlock)stateBlock
 {
+    if (self.attachedView == nil) {
+        self.attachedView = FWPopupWindow.sharedWindow.attachView;
+    }
     if (self.superview == nil) {
         [self.attachedView.dimMaskView addSubview:self];
         self.isResetSuperView = YES;
@@ -175,10 +190,6 @@ typedef NS_ENUM(NSInteger, FWConstraintsStates) {
 {
     if (self.popupStateBlock != nil) {
         self.popupStateBlock(self, FWPopupStateWillAppear);
-    }
-    
-    if (self.attachedView == nil) {
-        self.attachedView = FWPopupWindow.sharedWindow.attachView;
     }
     
     self.originKeyWindow = [[UIApplication sharedApplication] keyWindow];
@@ -301,7 +312,7 @@ typedef NS_ENUM(NSInteger, FWConstraintsStates) {
         for (UIView *view in self.attachedView.dimMaskView.subviews) {
             if (view == self) {
                 view.hidden = NO;
-            } else {
+            } else if (![[FWPopupWindow sharedWindow].needConstraintsViews containsObject:view]) {
                 view.hidden = YES;
                 [tmpHiddenViews addObject:view];
             }
@@ -462,6 +473,8 @@ typedef NS_ENUM(NSInteger, FWConstraintsStates) {
                     } else {
                         [FWPopupWindow sharedWindow].touchWildToHide = NO;
                     }
+                } else {
+                    [[FWPopupWindow sharedWindow].needConstraintsViews removeAllObjects];
                 }
                 
                 if (self.vProperty.shouldClearSpilthMask || [FWPopupWindow sharedWindow].shouldResetDimMaskView) {
@@ -946,10 +959,13 @@ typedef NS_ENUM(NSInteger, FWConstraintsStates) {
 - (void)setAttachedView:(UIView *)attachedView
 {
     _attachedView = attachedView;
-    [_attachedView.dimMaskView addSubview:self];
     if ([attachedView isKindOfClass:[UIScrollView class]]) {
         UIScrollView *view = (UIScrollView *)attachedView;
         self.originScrollEnabled = view.scrollEnabled;
+    }
+    
+    if (attachedView != [FWPopupWindow sharedWindow].attachView) {
+        [_attachedView.dimMaskView addSubview:self];
     }
 }
 
