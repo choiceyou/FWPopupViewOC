@@ -27,14 +27,14 @@
 {
     [super viewDidLoad];
     
-    self.titleArray = @[@"center - scale", @"topCenter - position (支持拖拽关闭弹窗)", @"topCenter - frame（shouldClearSpilthMask属性为YES，不支持横竖屏切换）", @"topCenter - scale", @"leftCenter - position (支持拖拽关闭弹窗)", @"leftCenter - frame (支持拖拽关闭弹窗)", @"leftCenter - scale (支持拖拽关闭弹窗)", @"bottomCenter - position (「弹簧」振动效果)", @"bottomCenter - frame（shouldClearSpilthMask属性为YES，不支持横竖屏切换）", @"bottomCenter - scale", @"rightCenter - position (支持拖拽关闭弹窗)", @"rightCenter - frame (支持拖拽关闭弹窗)", @"rightCenter - scale", @"GuideMaskTest(不支持横竖屏切换)", @"AreaPickerTest"];
+    self.titleArray = @[@"center - scale", @"topCenter - position (支持拖拽关闭弹窗)", @"topCenter - frame（shouldClearSpilthMask属性为YES，不支持横竖屏切换）", @"topCenter - scale", @"leftCenter - position (支持拖拽关闭弹窗)", @"leftCenter - frame (支持拖拽关闭弹窗)", @"leftCenter - scale (支持拖拽关闭弹窗)", @"bottomCenter - position (「弹簧」振动效果)", @"bottomCenter - frame（shouldClearSpilthMask属性为YES，不支持横竖屏切换）", @"bottomCenter - scale", @"rightCenter - position (支持拖拽关闭弹窗)", @"rightCenter - frame (支持拖拽关闭弹窗)", @"rightCenter - scale", @"GuideMaskTest(不支持横竖屏切换)", @"AreaPickerTest", @"同时显示两个弹窗"];
     
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"cellId"];
     self.tableView.estimatedRowHeight = 44.0;
     
     // 相关属性可以放FWCustomView2里面，注意这边不需要 addSubview 操作，因为弹窗是默认放在window上面的
     self.customView2 = [[FWCustomView2 alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width * 0.6, [UIScreen mainScreen].bounds.size.height * 0.3)];
-    self.customView2.backgroundColor = [UIColor redColor];
+    self.customView2.backgroundColor = [UIColor yellowColor];
     // 当然，也可以手动修改弹窗放置在某一个view上面
     //    self.customView2.attachedView = self.view;
 }
@@ -114,6 +114,7 @@
              如要初始化视图后要设置当前视图的约束，必须要使用该方法，因为这个方法会提前将当前视图加入父视图，使用该方法有以下几个注意点：
              1、使用该方法不支持更换父视图，即不支持修改：attachedView；
              2、使用该方法不建议把当前视图设置为成员变量，因为调用隐藏方法时会把当前视图从父视图中移除，调用显示方法后会重新添加到父视图，此时约束就会丢失相对于父视图的那部分；
+             3、有些约束可能会影响到某些动画的效果。
              */
             FWCustomView *customView = [[FWCustomView alloc] initWithConstraints];
             [customView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -294,6 +295,24 @@
                 NSLog(@"您当前选择了：%@ %@ %@",province,city,area);
             };
             [areaPickerView show];
+        }
+            break;
+        case 15:
+        {
+            [self.customView2 show];
+            
+            FWPanPopupView *customView = [[FWPanPopupView alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width * 0.6, [UIScreen mainScreen].bounds.size.height)];
+            
+            FWPopupBaseViewProperty *property = [FWPopupBaseViewProperty manager];
+            property.popupAlignment = FWPopupAlignmentLeftCenter;
+            property.popupAnimationStyle = FWPopupAnimationStylePosition;
+            property.maskViewColor = [UIColor colorWithWhite:0 alpha:0.5];
+            property.touchWildToHide = @"1";
+            property.popupEdgeInsets = UIEdgeInsetsMake(0, 0, 0, 0);
+            property.animationDuration = 0.3;
+            customView.vProperty = property;
+            
+            [customView show];
         }
             break;
             
