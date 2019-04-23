@@ -168,16 +168,13 @@ static const void *dimMaskAnimatingKey              = &dimMaskAnimatingKey;
                          
                      } completion:^(BOOL finished) {
                          
-                         if (finished)
+                         if (self == [FWPopupWindow sharedWindow].attachView)
                          {
-                             if (self == [FWPopupWindow sharedWindow].attachView)
-                             {
-                                 [FWPopupWindow sharedWindow].hidden = YES;
-                             }
-                             else if (self == [FWPopupWindow sharedWindow])
-                             {
-                                 self.hidden = YES;
-                             }
+                             [FWPopupWindow sharedWindow].hidden = YES;
+                         }
+                         else if (self == [FWPopupWindow sharedWindow])
+                         {
+                             self.hidden = YES;
                          }
                          
                          --self.dimReferenceCount;
