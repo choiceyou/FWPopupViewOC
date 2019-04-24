@@ -11,15 +11,17 @@
 #import "GuideMaskTestVC.h"
 #import "FWAreaPickerView.h"
 #import "FWPanPopupView.h"
+#import "Masonry.h"
 #import "FWCustomView2.h"
 #import "FWCustomView3.h"
-#import "Masonry.h"
+#import "FWCustomAdView.h"
 
 @interface ViewController ()
 
 @property (nonatomic, strong) NSArray *titleArray;
 @property (nonatomic, strong) FWCustomView2 *customView2;
 @property (nonatomic, strong) FWCustomView3 *customView3;
+@property (nonatomic, strong) FWCustomAdView *customAdView;
 
 @end
 
@@ -29,7 +31,7 @@
 {
     [super viewDidLoad];
     
-    self.titleArray = @[@"center - scale", @"topCenter - position (支持拖拽关闭弹窗)", @"topCenter - frame（shouldClearSpilthMask属性为YES，不支持横竖屏切换）", @"topCenter - scale", @"leftCenter - position (支持拖拽关闭弹窗)", @"leftCenter - frame (支持拖拽关闭弹窗)", @"leftCenter - scale (支持拖拽关闭弹窗)", @"bottomCenter - position (「弹簧」振动效果)", @"bottomCenter - frame（shouldClearSpilthMask属性为YES，不支持横竖屏切换）", @"bottomCenter - scale", @"rightCenter - position (支持拖拽关闭弹窗)", @"rightCenter - frame (支持拖拽关闭弹窗)", @"rightCenter - scale", @"GuideMaskTest(不支持横竖屏切换)", @"AreaPickerTest", @"同时显示两个弹窗", @"自定义带有箭头的弹窗"];
+    self.titleArray = @[@"center - scale", @"topCenter - position (支持拖拽关闭弹窗)", @"topCenter - frame（shouldClearSpilthMask属性为YES，不支持横竖屏切换）", @"topCenter - scale", @"leftCenter - position (支持拖拽关闭弹窗)", @"leftCenter - frame (支持拖拽关闭弹窗)", @"leftCenter - scale (支持拖拽关闭弹窗)", @"bottomCenter - position (「弹簧」振动效果)", @"bottomCenter - frame（shouldClearSpilthMask属性为YES，不支持横竖屏切换）", @"bottomCenter - scale", @"rightCenter - position (支持拖拽关闭弹窗)", @"rightCenter - frame (支持拖拽关闭弹窗)", @"rightCenter - scale", @"GuideMaskTest(不支持横竖屏切换)", @"AreaPickerTest", @"同时显示两个弹窗", @"自定义带有箭头的弹窗", @"自定义常见的广告弹窗1", @"自定义常见的广告弹窗2"];
     
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"cellId"];
     self.tableView.estimatedRowHeight = 44.0;
@@ -320,6 +322,15 @@
         case 16:
             [self.customView3 show];
             break;
+        case 17:
+            [self.customAdView show];
+            break;
+        case 18:
+        {
+            FWCustomAdView *customAdView2 = [[FWCustomAdView alloc] initWithCloseBtnType:FWCustomAdCloseBtnRightTop];
+            [customAdView2 show];
+        }
+            break;
             
         default:
             break;
@@ -333,6 +344,14 @@
         _customView3 = [[FWCustomView3 alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width * 0.6, [UIScreen mainScreen].bounds.size.height * 0.6)];
     }
     return _customView3;
+}
+
+- (FWCustomAdView *)customAdView
+{
+    if (!_customAdView) {
+        _customAdView = [[FWCustomAdView alloc] initWithCloseBtnType:FWCustomAdCloseBtnBottom];
+    }
+    return _customAdView;
 }
 
 @end

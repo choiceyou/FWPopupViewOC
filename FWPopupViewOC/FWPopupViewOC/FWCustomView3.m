@@ -49,6 +49,7 @@ static CGFloat kArrowHeight = 15;
     property.popupAlignment = FWPopupAlignmentTopCenter;
     property.popupAnimationStyle = FWPopupAnimationStyleScale;
     property.touchWildToHide = @"1";
+    property.popupEdgeInsets = UIEdgeInsetsMake(100, 0, 0, 0);
     property.popupArrowStyle = FWPopupArrowStyleRound;
     property.popupArrowSize = CGSizeMake(kArrowHeight*2, kArrowHeight);
     self.vProperty = property;
