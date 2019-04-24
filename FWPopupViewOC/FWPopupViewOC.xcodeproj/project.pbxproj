@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4917A3FB22704C70009575C9 /* FWCustomView3.m in Sources */ = {isa = PBXBuildFile; fileRef = 4917A3FA22704C70009575C9 /* FWCustomView3.m */; };
 		4917C08D20C7B35100A5006E /* FWPopupViewOC.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 4917C08C20C7B35100A5006E /* FWPopupViewOC.bundle */; };
 		4918FA6420D9DE8500741221 /* FWCustomView2.m in Sources */ = {isa = PBXBuildFile; fileRef = 4918FA6320D9DE8500741221 /* FWCustomView2.m */; };
 		4953B44F20B7FC36004B87D7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4953B44E20B7FC36004B87D7 /* AppDelegate.m */; };
@@ -50,6 +51,8 @@
 /* Begin PBXFileReference section */
 		2970265F6051BF10B20CB0A0 /* Pods-FWPopupViewOC.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FWPopupViewOC.release.xcconfig"; path = "Pods/Target Support Files/Pods-FWPopupViewOC/Pods-FWPopupViewOC.release.xcconfig"; sourceTree = "<group>"; };
 		4476C021B27D8FD8CC00D298 /* Pods-FWPopupViewOC.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FWPopupViewOC.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FWPopupViewOC/Pods-FWPopupViewOC.debug.xcconfig"; sourceTree = "<group>"; };
+		4917A3F922704C70009575C9 /* FWCustomView3.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FWCustomView3.h; sourceTree = "<group>"; };
+		4917A3FA22704C70009575C9 /* FWCustomView3.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FWCustomView3.m; sourceTree = "<group>"; };
 		4917C08C20C7B35100A5006E /* FWPopupViewOC.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = FWPopupViewOC.bundle; sourceTree = "<group>"; };
 		4918FA6220D9DE8500741221 /* FWCustomView2.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FWCustomView2.h; sourceTree = "<group>"; };
 		4918FA6320D9DE8500741221 /* FWCustomView2.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FWCustomView2.m; sourceTree = "<group>"; };
@@ -170,6 +173,8 @@
 				495FFCF520BBB0CD009746B1 /* FWCustomView.m */,
 				4918FA6220D9DE8500741221 /* FWCustomView2.h */,
 				4918FA6320D9DE8500741221 /* FWCustomView2.m */,
+				4917A3F922704C70009575C9 /* FWCustomView3.h */,
+				4917A3FA22704C70009575C9 /* FWCustomView3.m */,
 				49754ABF20C66E91009B31CC /* GuideMaskTestVC.h */,
 				49754AC020C66E91009B31CC /* GuideMaskTestVC.m */,
 				49754AC120C66E91009B31CC /* GuideMaskTestVC.xib */,
@@ -413,6 +418,7 @@
 			files = (
 				496B482D20C8BC7100EE518D /* FWAreaPickerView.m in Sources */,
 				4953B45220B7FC36004B87D7 /* ViewController.m in Sources */,
+				4917A3FB22704C70009575C9 /* FWCustomView3.m in Sources */,
 				4953B45D20B7FC38004B87D7 /* main.m in Sources */,
 				4953B48B20B80D4D004B87D7 /* UIView+PopupView.m in Sources */,
 				4953B44F20B7FC36004B87D7 /* AppDelegate.m in Sources */,

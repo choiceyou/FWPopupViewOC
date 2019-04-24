@@ -12,12 +12,14 @@
 #import "FWAreaPickerView.h"
 #import "FWPanPopupView.h"
 #import "FWCustomView2.h"
+#import "FWCustomView3.h"
 #import "Masonry.h"
 
 @interface ViewController ()
 
 @property (nonatomic, strong) NSArray *titleArray;
 @property (nonatomic, strong) FWCustomView2 *customView2;
+@property (nonatomic, strong) FWCustomView3 *customView3;
 
 @end
 
@@ -27,7 +29,7 @@
 {
     [super viewDidLoad];
     
-    self.titleArray = @[@"center - scale", @"topCenter - position (支持拖拽关闭弹窗)", @"topCenter - frame（shouldClearSpilthMask属性为YES，不支持横竖屏切换）", @"topCenter - scale", @"leftCenter - position (支持拖拽关闭弹窗)", @"leftCenter - frame (支持拖拽关闭弹窗)", @"leftCenter - scale (支持拖拽关闭弹窗)", @"bottomCenter - position (「弹簧」振动效果)", @"bottomCenter - frame（shouldClearSpilthMask属性为YES，不支持横竖屏切换）", @"bottomCenter - scale", @"rightCenter - position (支持拖拽关闭弹窗)", @"rightCenter - frame (支持拖拽关闭弹窗)", @"rightCenter - scale", @"GuideMaskTest(不支持横竖屏切换)", @"AreaPickerTest", @"同时显示两个弹窗"];
+    self.titleArray = @[@"center - scale", @"topCenter - position (支持拖拽关闭弹窗)", @"topCenter - frame（shouldClearSpilthMask属性为YES，不支持横竖屏切换）", @"topCenter - scale", @"leftCenter - position (支持拖拽关闭弹窗)", @"leftCenter - frame (支持拖拽关闭弹窗)", @"leftCenter - scale (支持拖拽关闭弹窗)", @"bottomCenter - position (「弹簧」振动效果)", @"bottomCenter - frame（shouldClearSpilthMask属性为YES，不支持横竖屏切换）", @"bottomCenter - scale", @"rightCenter - position (支持拖拽关闭弹窗)", @"rightCenter - frame (支持拖拽关闭弹窗)", @"rightCenter - scale", @"GuideMaskTest(不支持横竖屏切换)", @"AreaPickerTest", @"同时显示两个弹窗", @"自定义带有箭头的弹窗"];
     
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"cellId"];
     self.tableView.estimatedRowHeight = 44.0;
@@ -315,10 +317,22 @@
             [customView show];
         }
             break;
+        case 16:
+            [self.customView3 show];
+            break;
             
         default:
             break;
     }
+}
+
+
+- (FWCustomView3 *)customView3
+{
+    if (!_customView3) {
+        _customView3 = [[FWCustomView3 alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width * 0.6, [UIScreen mainScreen].bounds.size.height * 0.6)];
+    }
+    return _customView3;
 }
 
 @end
