@@ -32,7 +32,7 @@
 {
     [super viewDidLoad];
     
-    self.titleArray = @[@"1、center - scale", @"2、topCenter - position (支持拖拽关闭弹窗)", @"3、topCenter - frame（shouldClearSpilthMask属性为YES，不支持横竖屏切换）", @"4、topCenter - scale", @"leftCenter - position (支持拖拽关闭弹窗)", @"5、leftCenter - frame (支持拖拽关闭弹窗)", @"6、leftCenter - scale (支持拖拽关闭弹窗)", @"7、bottomCenter - position (「弹簧」振动效果)", @"8、bottomCenter - frame（shouldClearSpilthMask属性为YES，不支持横竖屏切换）", @"9、bottomCenter - scale", @"10、rightCenter - position (支持拖拽关闭弹窗)", @"11、rightCenter - frame (支持拖拽关闭弹窗)", @"12、rightCenter - scale（注意：当前视图是放在view上面的，不是放在window，现象就是导航栏、状态栏没有被遮挡）", @"13、GuideMaskTest(不支持横竖屏切换)", @"14、AreaPickerTest", @"15、同时显示两个弹窗（展示可以同时调用多个弹窗的显示方法，但是显示过程按“后来者先显示”的原则，因此过程则反之）", @"16、自定义带有箭头的弹窗", @"17、自定义常见的广告弹窗1", @"18、自定义常见的广告弹窗2"];
+    self.titleArray = @[@"1、center - scale", @"2、topCenter - position (支持拖拽关闭弹窗)", @"3、topCenter - frame（shouldClearSpilthMask属性为YES，不支持横竖屏切换，注意：此时头部没有遮罩层）", @"4、topCenter - scale", @"5、leftCenter - position (支持拖拽关闭弹窗)", @"6、leftCenter - frame (支持拖拽关闭弹窗)", @"7、leftCenter - scale (支持拖拽关闭弹窗)", @"8、bottomCenter - position (「弹簧」振动效果)", @"9、bottomCenter - frame（shouldClearSpilthMask属性为YES，不支持横竖屏切换）", @"10、bottomCenter - scale", @"11、rightCenter - position (支持拖拽关闭弹窗)", @"12、rightCenter - frame (支持拖拽关闭弹窗)", @"13、rightCenter - scale（注意：当前视图是放在view上面的，不是放在window，现象就是导航栏、状态栏没有被遮挡）", @"14、GuideMaskTest(不支持横竖屏切换)", @"15、AreaPickerTest", @"16、同时显示两个弹窗（展示可以同时调用多个弹窗的显示方法，但是显示过程按“后来者先显示”的原则，因此过程则反之）", @"17、自定义带有箭头的弹窗", @"18、自定义常见的广告弹窗1", @"19、自定义常见的广告弹窗2"];
     
     [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.equalTo(self.view);
