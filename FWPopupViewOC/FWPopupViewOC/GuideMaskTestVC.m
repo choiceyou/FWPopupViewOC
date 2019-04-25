@@ -18,6 +18,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    self.navigationItem.title = @"新手引导页";
 }
 
 - (IBAction)showAction:(id)sender
