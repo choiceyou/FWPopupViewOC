@@ -100,13 +100,14 @@
         case 2:
         {
             FWCustomView *customView2 = [[FWCustomView alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height * 0.4)];
+            customView2.backgroundColor = [UIColor purpleColor];
             
             FWPopupBaseViewProperty *property2 = [FWPopupBaseViewProperty manager];
             property2.popupAlignment = FWPopupAlignmentTopCenter;
             property2.popupAnimationStyle = FWPopupAnimationStyleFrame;
             property2.maskViewColor = [UIColor colorWithWhite:0 alpha:0.5];
             property2.touchWildToHide = @"1";
-            property2.popupEdgeInsets = UIEdgeInsetsMake(64, 0, 0, 0);
+            property2.popupEdgeInsets = UIEdgeInsetsMake(120, 0, 0, 0);
             property2.animationDuration = 0.5;
             property2.shouldClearSpilthMask = YES;
             customView2.vProperty = property2;
@@ -212,6 +213,7 @@
         case 8:
         {
             FWCustomView *customView = [[FWCustomView alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height * 0.4)];
+            customView.backgroundColor = [UIColor redColor];
             
             FWPopupBaseViewProperty *property = [FWPopupBaseViewProperty manager];
             property.popupAlignment = FWPopupAlignmentBottomCenter;
