@@ -4,7 +4,7 @@
 //
 //  Created by xfg on 2017/5/25.
 //  Copyright © 2018年 xfg. All rights reserved.
-//
+//  该类为演示代码：因此可能各种写法都会涉及到，看的过程中选择适合自己的写法就可以了
 
 #import "ViewController.h"
 #import "FWCustomView.h"
@@ -16,8 +16,9 @@
 #import "FWCustomView3.h"
 #import "FWCustomAdView.h"
 
-@interface ViewController ()
+@interface ViewController () <UITableViewDelegate, UITableViewDataSource>
 
+@property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) NSArray *titleArray;
 @property (nonatomic, strong) FWCustomView2 *customView2;
 @property (nonatomic, strong) FWCustomView3 *customView3;
@@ -31,8 +32,11 @@
 {
     [super viewDidLoad];
     
-    self.titleArray = @[@"center - scale", @"topCenter - position (支持拖拽关闭弹窗)", @"topCenter - frame（shouldClearSpilthMask属性为YES，不支持横竖屏切换）", @"topCenter - scale", @"leftCenter - position (支持拖拽关闭弹窗)", @"leftCenter - frame (支持拖拽关闭弹窗)", @"leftCenter - scale (支持拖拽关闭弹窗)", @"bottomCenter - position (「弹簧」振动效果)", @"bottomCenter - frame（shouldClearSpilthMask属性为YES，不支持横竖屏切换）", @"bottomCenter - scale", @"rightCenter - position (支持拖拽关闭弹窗)", @"rightCenter - frame (支持拖拽关闭弹窗)", @"rightCenter - scale", @"GuideMaskTest(不支持横竖屏切换)", @"AreaPickerTest", @"同时显示两个弹窗", @"自定义带有箭头的弹窗", @"自定义常见的广告弹窗1", @"自定义常见的广告弹窗2"];
+    self.titleArray = @[@"1、center - scale", @"2、topCenter - position (支持拖拽关闭弹窗)", @"3、topCenter - frame（shouldClearSpilthMask属性为YES，不支持横竖屏切换）", @"4、topCenter - scale", @"leftCenter - position (支持拖拽关闭弹窗)", @"5、leftCenter - frame (支持拖拽关闭弹窗)", @"6、leftCenter - scale (支持拖拽关闭弹窗)", @"7、bottomCenter - position (「弹簧」振动效果)", @"8、bottomCenter - frame（shouldClearSpilthMask属性为YES，不支持横竖屏切换）", @"9、bottomCenter - scale", @"10、rightCenter - position (支持拖拽关闭弹窗)", @"11、rightCenter - frame (支持拖拽关闭弹窗)", @"12、rightCenter - scale（注意：当前视图是放在view上面的，不是放在window，现象就是导航栏、状态栏没有被遮挡）", @"13、GuideMaskTest(不支持横竖屏切换)", @"14、AreaPickerTest", @"15、同时显示两个弹窗（展示可以同时调用多个弹窗的显示方法，但是显示过程按“后来者先显示”的原则，因此过程则反之）", @"16、自定义带有箭头的弹窗", @"17、自定义常见的广告弹窗1", @"18、自定义常见的广告弹窗2"];
     
+    [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.equalTo(self.view);
+    }];
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"cellId"];
     self.tableView.estimatedRowHeight = 44.0;
     
@@ -284,6 +288,7 @@
             property.animationDuration = 0.3;
             customView.vProperty = property;
             
+            // 注意self.view如果为UIScrollView或其子类，可能会产生遮罩层显示不完全等问题
             customView.attachedView = self.view;
             
             [customView show];
@@ -352,6 +357,17 @@
         _customAdView = [[FWCustomAdView alloc] initWithCloseBtnType:FWCustomAdCloseBtnBottom];
     }
     return _customAdView;
+}
+
+- (UITableView *)tableView
+{
+     if (!_tableView) {
+        _tableView = [[UITableView alloc] init];
+        _tableView.delegate = self;
+        _tableView.dataSource = self;
+        [self.view addSubview:_tableView];
+    }
+    return _tableView;
 }
 
 @end
