@@ -8,7 +8,6 @@ target 'FWPopupViewOC' do
     pod 'Masonry'
     
     # 注意：这边引入的两个库都跟我们无关，这边只是测试作用
-    
     # 弹窗Swift版本
     pod 'FWPopupView'
     # 监测内存泄漏：https://github.com/Zepo/MLeaksFinder
