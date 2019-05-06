@@ -310,7 +310,9 @@
             break;
         case 15:
         {
-            [self.customView2 show];
+            [self.customView2 showWithStateBlock:^(FWPopupBaseView *popupBaseView, FWPopupState popupState) {
+                NSLog(@"self.customView2的状态：%ld", (long)popupState);
+            }];
             
             FWPanPopupView *customView = [[FWPanPopupView alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width * 0.6, [UIScreen mainScreen].bounds.size.height)];
             
