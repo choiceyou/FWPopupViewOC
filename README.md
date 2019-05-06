@@ -178,6 +178,7 @@ pod 'FWPopupViewOC'
 ![](https://github.com/choiceyou/FWPopupViewOC/blob/master/%E6%95%88%E6%9E%9C/IMG_02.png)
 
 
+
 ## 更新记录：
 
 • v2.1.0：
@@ -215,6 +216,11 @@ pod 'FWPopupViewOC'
 - [x] 解决app进入后台时隐藏弹窗可能出现界面卡死问题；
 - [x] 解决多次调用显示、隐藏的安全判断（会导致约束出错问题）；
 - [x] 增加hiddenViews添加视图的条件判断，解决某些视图已经创建了，但还未显示过一次依然会加入hiddenViews的问题；
+
+• v3.0.3:
+- [x] 支持重新设置弹窗视图size；
+- [x] 添加两种弹窗状态：FWPopupStateDidAppearButCovered、FWPopupStateDidAppearAgain；
+
 
 
 ## 结尾语：
