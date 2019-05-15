@@ -56,8 +56,8 @@
             if ([v isKindOfClass:[FWPopupBaseView class]] && ![self.hiddenViews containsObject:v])
             {
                 FWPopupBaseView *popupView = (FWPopupBaseView *)v;
-                [popupView clicedMaskView];
-                if (self.touchWildToHide)
+                [popupView clickedMaskView];
+                if (self.touchWildToHide && popupView.currentPopupState == FWPopupStateDidAppear)
                 {
                     [popupView hide];
                 }

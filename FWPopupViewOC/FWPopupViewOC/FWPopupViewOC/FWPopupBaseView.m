@@ -933,7 +933,7 @@ typedef NS_ENUM(NSInteger, FWConstraintsStates) {
 
 - (void)tapGestureAction:(UIGestureRecognizer *)gesture
 {
-    [self clicedMaskView];
+    [self clickedMaskView];
     
     if ([FWPopupWindow sharedWindow].touchWildToHide && !self.dimMaskAnimating)
     {
@@ -953,7 +953,7 @@ typedef NS_ENUM(NSInteger, FWConstraintsStates) {
     return touch.view == self.attachedView.dimMaskView;
 }
 
-- (void)clicedMaskView
+- (void)clickedMaskView
 {
     // 供子类重写
 }

@@ -204,7 +204,7 @@ static NSString *const FWHideAllPopupViewNotification = @"FWHideAllPopupViewNoti
 /**
  遮罩层被单击，主要用来给子类重写
  */
-- (void)clicedMaskView;
+- (void)clickedMaskView;
 
 /**
  获取当前视图AnchorPoint
