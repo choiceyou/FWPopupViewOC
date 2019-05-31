@@ -111,7 +111,7 @@ typedef NS_ENUM(NSInteger, FWConstraintsStates) {
 {
     self.finalFrame = CGRectMake(0, 0, size.width, size.height);
     
-    if (isImmediateEffect && self.currentPopupState == FWPopupStateDidAppear) {
+    if (isImmediateEffect && (self.currentPopupState == FWPopupStateDidAppear || self.currentPopupState == FWPopupStateDidAppearAgain)) {
         FWPWeakify(self)
         [self hideWithDidDisappearBlock:^(FWPopupBaseView *popupBaseView) {
             FWPStrongify(self)
@@ -1084,3 +1084,4 @@ typedef NS_ENUM(NSInteger, FWConstraintsStates) {
 }
 
 @end
+
