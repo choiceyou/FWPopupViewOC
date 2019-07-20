@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 //#import <FWPopupView/FWPopupView-Swift.h>
 #import "ViewController.h"
+#import "FWNavigationController.h"
 
 @interface AppDelegate ()
 
@@ -20,7 +21,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
-    self.window.rootViewController = [[UINavigationController alloc] initWithRootViewController:[[ViewController alloc] init]];
+    self.window.rootViewController = [[FWNavigationController alloc] initWithRootViewController:[[ViewController alloc] init]];
     [self.window makeKeyAndVisible];
     
     return YES;
