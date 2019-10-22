@@ -31,6 +31,12 @@ open class FWDateView: FWPopupView {
     private var confirmBlock: FWDateViewConfirmBlock?
     private var cancelBlock: FWPopupVoidBlock?
     
+    /// 类初始化方法
+    ///
+    /// - Parameters:
+    ///   - confirmBlock: 点击确定按钮回调
+    ///   - cancelBlock: 点击取消按钮回调
+    /// - Returns: self
     @objc open class func date(confirmBlock: FWDateViewConfirmBlock? = nil, cancelBlock: FWPopupVoidBlock? = nil) -> FWDateView {
         
         let dateView = FWDateView()
@@ -87,7 +93,7 @@ extension FWDateView {
         btn.setTitle(title, for: .normal)
         btn.setTitleColor(property.btnTitleColor, for: .normal)
         btn.backgroundColor = self.backgroundColor
-        btn.titleLabel?.font = UIFont.boldSystemFont(ofSize: property.btnTitleFont)
+        btn.titleLabel?.font = UIFont.systemFont(ofSize: property.btnTitleFont)
         return btn
     }
     

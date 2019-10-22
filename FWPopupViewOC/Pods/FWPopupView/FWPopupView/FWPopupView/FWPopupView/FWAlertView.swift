@@ -36,7 +36,7 @@ open class FWAlertView: FWPopupView {
     private var commponenetCount: Int = 0
     
     
-    /// 单个按钮的弹窗
+    /// 类初始化方法1：单个按钮的弹窗
     ///
     /// - Parameters:
     ///   - title: 标题
@@ -49,7 +49,7 @@ open class FWAlertView: FWPopupView {
         return self.alert(title: title, detail: detail, inputPlaceholder: nil, keyboardType: .default, isSecureTextEntry: false, customView: nil, items: items, vProperty: nil)
     }
     
-    /// 两个按钮的弹窗
+    /// 类初始化方法2：两个按钮的弹窗
     ///
     /// - Parameters:
     ///   - title: 标题
@@ -65,7 +65,7 @@ open class FWAlertView: FWPopupView {
         return self.alert(title: title, detail: detail, inputPlaceholder: nil, keyboardType: .default, isSecureTextEntry: false, customView: nil, items: items, vProperty: nil)
     }
     
-    /// 可带输入框的弹窗
+    /// 类初始化方法3：可带输入框的弹窗
     ///
     /// - Parameters:
     ///   - title: 标题
@@ -78,7 +78,7 @@ open class FWAlertView: FWPopupView {
         return self.alert(title: title, detail: detail, inputPlaceholder: inputPlaceholder, keyboardType: keyboardType, isSecureTextEntry: isSecureTextEntry, customView: nil, items: items, vProperty: nil)
     }
     
-    /// 可带输入框、自定义视图的弹窗
+    /// 类初始化方法4：可带输入框、自定义视图的弹窗
     ///
     /// - Parameters:
     ///   - title: 标题
@@ -87,12 +87,12 @@ open class FWAlertView: FWPopupView {
     ///   - items: 点击按钮项
     ///   - customView: 自定义UI
     /// - Returns: self
-    @objc open class func alert(title: String, detail: String, inputPlaceholder: String?, keyboardType: UIKeyboardType, isSecureTextEntry: Bool, customView: UIView?, items: [FWPopupItem]) -> FWAlertView {
+    @objc open class func alert(title: String?, detail: String?, inputPlaceholder: String?, keyboardType: UIKeyboardType, isSecureTextEntry: Bool, customView: UIView?, items: [FWPopupItem]) -> FWAlertView {
         
         return self.alert(title: title, detail: detail, inputPlaceholder: inputPlaceholder, keyboardType: keyboardType, isSecureTextEntry: isSecureTextEntry, customView: customView, items: items, vProperty: nil)
     }
     
-    /// 可带输入框、自定义视图的弹窗，可设置Alert相关属性
+    /// 类初始化方法5：可带输入框、自定义视图的弹窗，可设置Alert相关属性
     ///
     /// - Parameters:
     ///   - title: 标题
@@ -205,7 +205,7 @@ extension FWAlertView {
             self.titleLabel?.text = title
             self.titleLabel?.textColor = self.vProperty.titleColor
             self.titleLabel?.textAlignment = .center
-            self.titleLabel?.font = UIFont.boldSystemFont(ofSize: self.vProperty.titleFontSize)
+            self.titleLabel?.font = (self.vProperty.titleFont != nil) ? self.vProperty.titleFont! : UIFont.systemFont(ofSize: self.vProperty.titleFontSize)
             self.titleLabel?.numberOfLines = 5
             self.titleLabel?.backgroundColor = UIColor.clear
             
@@ -225,7 +225,7 @@ extension FWAlertView {
             self.detailLabel?.text = detail
             self.detailLabel?.textColor = property.detailColor
             self.detailLabel?.textAlignment = .center
-            self.detailLabel?.font = UIFont.boldSystemFont(ofSize: property.detailFontSize)
+            self.detailLabel?.font = (property.detailFont != nil) ? property.detailFont! : UIFont.systemFont(ofSize: property.detailFontSize)
             self.detailLabel?.numberOfLines = 0
             self.detailLabel?.backgroundColor = UIColor.clear
             
@@ -332,12 +332,18 @@ extension FWAlertView {
                 btn.setTitleColor(popupItem.highlight ? self.vProperty.itemHighlightColor : self.vProperty.itemNormalColor, for: .normal)
             }
             
+            // 按钮文字大小
+            if popupItem.itemTitleFont != nil {
+                btn.titleLabel?.font = popupItem.itemTitleFont
+            } else {
+                btn.titleLabel?.font = (self.vProperty.buttonFont != nil) ? self.vProperty.buttonFont! : UIFont.systemFont(ofSize: self.vProperty.buttonFontSize)
+            }
+            
             btn.setTitle(popupItem.title, for: .normal)
             btn.layer.borderWidth = self.vProperty.splitWidth
             btn.layer.borderColor = self.vProperty.splitColor.cgColor
             btn.setBackgroundImage(self.getImageWithColor(color: btn.backgroundColor!), for: .normal)
             btn.setBackgroundImage(self.getImageWithColor(color: self.vProperty.itemPressedColor), for: .highlighted)
-            btn.titleLabel?.font = UIFont.boldSystemFont(ofSize: self.vProperty.buttonFontSize)
             
             tmpIndex += 1
         }
@@ -390,6 +396,8 @@ open class FWAlertViewProperty: FWPopupViewProperty {
     
     // 描述字体大小
     @objc open var detailFontSize: CGFloat      = 14.0
+    // 描述字体，设置该值后detailFontSize无效
+    @objc open var detailFont: UIFont?
     // 描述文字颜色
     @objc open var detailColor: UIColor         = kPV_RGBA(r: 51, g: 51, b: 51, a: 1)
     

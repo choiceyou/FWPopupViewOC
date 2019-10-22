@@ -258,7 +258,7 @@
 				4953B44620B7FC36004B87D7 /* Sources */,
 				4953B44720B7FC36004B87D7 /* Frameworks */,
 				4953B44820B7FC36004B87D7 /* Resources */,
-				28D9187220C80A017B5DB88D /* [CP] Embed Pods Frameworks */,
+				07DE272FA23B8828856DB9EF /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -377,30 +377,17 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		28D9187220C80A017B5DB88D /* [CP] Embed Pods Frameworks */ = {
+		07DE272FA23B8828856DB9EF /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-FWPopupViewOC/Pods-FWPopupViewOC-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/FBRetainCycleDetector/FBRetainCycleDetector.framework",
-				"${BUILT_PRODUCTS_DIR}/FWPopupView/FWPopupView.framework",
-				"${BUILT_PRODUCTS_DIR}/MLeaksFinder/MLeaksFinder.framework",
-				"${BUILT_PRODUCTS_DIR}/Masonry/Masonry.framework",
-				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
+				"${PODS_ROOT}/Target Support Files/Pods-FWPopupViewOC/Pods-FWPopupViewOC-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
-			);
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBRetainCycleDetector.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FWPopupView.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MLeaksFinder.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Masonry.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
+				"${PODS_ROOT}/Target Support Files/Pods-FWPopupViewOC/Pods-FWPopupViewOC-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
