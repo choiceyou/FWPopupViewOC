@@ -19,6 +19,20 @@
     dispatch_once(&onceToken, ^{
         window = [[FWPopupWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
         window.rootViewController = [FWPopupRootController new];
+        if (@available(iOS 13.0, *)) {
+            if (window.windowScene == nil) {
+                UIWindowScene *windowScene = nil;
+                for (UIWindowScene *tmpScene in [UIApplication sharedApplication].connectedScenes) {
+                    if (tmpScene.activationState == UISceneActivationStateForegroundActive) {
+                        windowScene = tmpScene;
+                        break;
+                    }
+                }
+                if (windowScene) {
+                    window.windowScene = windowScene;
+                }
+            }
+        }
     });
     
     return window;

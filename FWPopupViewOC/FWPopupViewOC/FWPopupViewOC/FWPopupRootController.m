@@ -23,8 +23,8 @@
 - (UIStatusBarStyle)preferredStatusBarStyle
 {
     if (@available(iOS 13.0, *)) {
-        if ([UIApplication sharedApplication].keyWindow) {
-            return [UIApplication sharedApplication].keyWindow.windowScene.statusBarManager.statusBarStyle;
+        if ([UIApplication sharedApplication].windows.firstObject) {
+            return [UIApplication sharedApplication].windows.firstObject.windowScene.statusBarManager.statusBarStyle;
         }
     }
     return [UIApplication sharedApplication].statusBarStyle;
@@ -33,8 +33,8 @@
 - (BOOL)prefersStatusBarHidden
 {
     if (@available(iOS 13.0, *)) {
-        if ([UIApplication sharedApplication].keyWindow) {
-            return [UIApplication sharedApplication].keyWindow.windowScene.statusBarManager.statusBarHidden;
+        if ([UIApplication sharedApplication].windows.firstObject) {
+            return [UIApplication sharedApplication].windows.firstObject.windowScene.statusBarManager.statusBarHidden;
         }
     }
     return [UIApplication sharedApplication].statusBarHidden;
