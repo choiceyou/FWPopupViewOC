@@ -92,6 +92,24 @@
     return touch.view == self.attachView.dimMaskView;
 }
 
+#pragma mark 隐藏全部的弹窗（包括当前不可见的弹窗）
+- (void)removeAllPopupView
+{
+    for (UIView *tmpView in [self attachView].dimMaskView.subviews)
+    {
+        if ([tmpView isKindOfClass:[FWPopupBaseView class]])
+        {
+            FWPopupBaseView *pView = (FWPopupBaseView *)tmpView;
+            [pView hide];
+        }
+    }
+    [self.attachView hideDimMask];
+}
+
+
+#pragma mark -
+#pragma mark - GET/SET
+
 - (UIView *)attachView
 {
     return self.rootViewController.view;
