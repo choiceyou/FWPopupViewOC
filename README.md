@@ -10,7 +10,8 @@
 ```cocoaPods
 1、同一窗口内目前只支持弹窗一个弹窗，如果需要同时展示两个弹窗，建议与系统或者其他自定义弹窗配合使用；
 2、如需两个弹窗接连使用，请保证第一个弹窗完全消失再调用第二个弹窗；
-3、鉴于方法或者属性可能跟着版本改动，因此强烈建议使用该库时封装一层后再使用！！！
+3、鉴于方法或者属性可能跟着版本改动，因此强烈建议使用该库时封装一层后再使用；
+4、如需在弹窗上展示SVProgressHUD，可设置：[SVProgressHUD setMaxSupportedWindowLevel:UIWindowLevelStatusBar+1]；
 ```
 
 
@@ -174,38 +175,58 @@ pod 'FWPopupViewOC'
 ![](https://github.com/choiceyou/FWPopupViewOC/blob/master/%E6%95%88%E6%9E%9C/%E6%95%88%E6%9E%9C3.gif)
 ![](https://github.com/choiceyou/FWPopupViewOC/blob/master/%E6%95%88%E6%9E%9C/%E6%95%88%E6%9E%9C2.gif)
 ![](https://github.com/choiceyou/FWPopupViewOC/blob/master/%E6%95%88%E6%9E%9C/IMG_0724.PNG)
+![](https://github.com/choiceyou/FWPopupViewOC/blob/master/%E6%95%88%E6%9E%9C/IMG_01.png)
+![](https://github.com/choiceyou/FWPopupViewOC/blob/master/%E6%95%88%E6%9E%9C/IMG_02.png)
+
 
 
 ## 更新记录：
 
-```更新记录
-• v2.1.0 ：
-  1.弹窗基类（FWPopupBaseView）中增加让多余部分的遮罩层变为无色属性：shouldClearSpilthMask；
-  2.新增新手引导弹窗：FWGuideMaskView；
+• v2.1.0：
+- [x] 弹窗基类（FWPopupBaseView）中增加让多余部分的遮罩层变为无色属性：shouldClearSpilthMask；
+- [x] 新增新手引导弹窗：FWGuideMaskView；
   
-• v2.1.1 ：
-  1.新增拖动关闭的弹窗基类：FWPanPopupView；
+• v2.1.1：
+- [x] 新增拖动关闭的弹窗基类：FWPanPopupView；
   
-• v2.1.2 ：
-  1.修复点击非遮罩层视图会显示的问题；
+• v2.1.2：
+- [x] 修复点击非遮罩层视图会显示的问题；
   
-• v2.1.3 ：
-  1.修复弹窗为成员变量时，再次调起弹窗后位置发生变化的问题；
+• v2.1.3：
+- [x] 修复弹窗为成员变量时，再次调起弹窗后位置发生变化的问题；
   
-• v2.1.4 ：
-  1.增加：保证前一次弹窗销毁的处理机制；
+• v2.1.4：
+- [x] 增加：保证前一次弹窗销毁的处理机制；
   
-• v2.1.5 ：
-  1.修复弹窗消失时内存泄漏问题；
+• v2.1.5：
+- [x] 修复弹窗消失时内存泄漏问题；
   
-• v2.1.6 ：
-  1.修复xib加载View方式时，继承弹窗基类FWPopupBaseView崩溃问题；
+• v2.1.6：
+- [x] 修复xib加载View方式时，继承弹窗基类FWPopupBaseView崩溃问题；
   
-• v2.1.9 ：
-  1.添加弹窗状态：FWPopupState；
-  2.根据状态对应的进行回调，这样子可以根据实际使用来回调，废除原：showWithBlock 和 hideWithBlock 方法，新增：showWithDidAppearBlock、showWithStateBlock、hideWithDidDisappearBlock 方法；
-```
+• v2.1.9：
+- [x] 添加弹窗状态：FWPopupState；
+- [x] 根据状态对应的进行回调，这样子可以根据实际使用来回调，废除原：showWithBlock 和 hideWithBlock 方法，新增：showWithDidAppearBlock、showWithStateBlock、hideWithDidDisappearBlock 方法；
 
+• v3.0.0（大版本）：
+- [x] 使用Masonry库重构了弹窗基类及部分弹窗视图；
+- [x] 支持横竖屏切换（注意：shouldClearSpilthMask属性为YES时不支持横竖屏切换，会出现视图显示的问题）；
+- [x] 支持多个弹窗存在（详细请查看：同时显示两个弹窗的演示）；
+
+• v3.0.1:
+- [x] 解决app进入后台时隐藏弹窗可能出现界面卡死问题；
+- [x] 解决多次调用显示、隐藏的安全判断（会导致约束出错问题）；
+- [x] 增加hiddenViews添加视图的条件判断，解决某些视图已经创建了，但还未显示过一次依然会加入hiddenViews的问题；
+
+• v3.0.3:
+- [x] 支持重新设置弹窗视图size；
+- [x] 添加两种弹窗状态：FWPopupStateDidAppearButCovered、FWPopupStateDidAppearAgain；
+
+• v3.0.4:
+- [x] 解决多个弹窗同时存在时，最后一个弹窗可能无法外部点击的问题；
+
+• v3.0.5:
+- [x] 解决（View controller-based status bar appearance = "YES"）状态栏隐藏的情况下，弹窗时会显示出状态栏的问题；
 
 
 ## 结尾语：

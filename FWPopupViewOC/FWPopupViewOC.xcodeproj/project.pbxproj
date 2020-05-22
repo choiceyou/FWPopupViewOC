@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4917A3FB22704C70009575C9 /* FWCustomView3.m in Sources */ = {isa = PBXBuildFile; fileRef = 4917A3FA22704C70009575C9 /* FWCustomView3.m */; };
+		4917A3FE22707803009575C9 /* FWCustomAdView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4917A3FD22707803009575C9 /* FWCustomAdView.m */; };
 		4917C08D20C7B35100A5006E /* FWPopupViewOC.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 4917C08C20C7B35100A5006E /* FWPopupViewOC.bundle */; };
 		4918FA6420D9DE8500741221 /* FWCustomView2.m in Sources */ = {isa = PBXBuildFile; fileRef = 4918FA6320D9DE8500741221 /* FWCustomView2.m */; };
 		4953B44F20B7FC36004B87D7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4953B44E20B7FC36004B87D7 /* AppDelegate.m */; };
@@ -23,6 +25,7 @@
 		496B482D20C8BC7100EE518D /* FWAreaPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 496B482C20C8BC7100EE518D /* FWAreaPickerView.m */; };
 		496B482F20C8BC7A00EE518D /* area_cn.plist in Resources */ = {isa = PBXBuildFile; fileRef = 496B482E20C8BC7A00EE518D /* area_cn.plist */; };
 		496F593620CBAEF400094595 /* FWPanPopupView.m in Sources */ = {isa = PBXBuildFile; fileRef = 496F593420CBAEF300094595 /* FWPanPopupView.m */; };
+		4970E89F22E3069600D6F516 /* FWNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4970E89E22E3069600D6F516 /* FWNavigationController.m */; };
 		49754ABE20C61DCE009B31CC /* FWGuideMaskView.m in Sources */ = {isa = PBXBuildFile; fileRef = 49754ABD20C61DCE009B31CC /* FWGuideMaskView.m */; };
 		49754AC220C66E91009B31CC /* GuideMaskTestVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 49754AC020C66E91009B31CC /* GuideMaskTestVC.m */; };
 		49754AC320C66E91009B31CC /* GuideMaskTestVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 49754AC120C66E91009B31CC /* GuideMaskTestVC.xib */; };
@@ -50,6 +53,10 @@
 /* Begin PBXFileReference section */
 		2970265F6051BF10B20CB0A0 /* Pods-FWPopupViewOC.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FWPopupViewOC.release.xcconfig"; path = "Pods/Target Support Files/Pods-FWPopupViewOC/Pods-FWPopupViewOC.release.xcconfig"; sourceTree = "<group>"; };
 		4476C021B27D8FD8CC00D298 /* Pods-FWPopupViewOC.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FWPopupViewOC.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FWPopupViewOC/Pods-FWPopupViewOC.debug.xcconfig"; sourceTree = "<group>"; };
+		4917A3F922704C70009575C9 /* FWCustomView3.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FWCustomView3.h; sourceTree = "<group>"; };
+		4917A3FA22704C70009575C9 /* FWCustomView3.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FWCustomView3.m; sourceTree = "<group>"; };
+		4917A3FC22707803009575C9 /* FWCustomAdView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FWCustomAdView.h; sourceTree = "<group>"; };
+		4917A3FD22707803009575C9 /* FWCustomAdView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FWCustomAdView.m; sourceTree = "<group>"; };
 		4917C08C20C7B35100A5006E /* FWPopupViewOC.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = FWPopupViewOC.bundle; sourceTree = "<group>"; };
 		4918FA6220D9DE8500741221 /* FWCustomView2.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FWCustomView2.h; sourceTree = "<group>"; };
 		4918FA6320D9DE8500741221 /* FWCustomView2.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FWCustomView2.m; sourceTree = "<group>"; };
@@ -81,6 +88,8 @@
 		496B482E20C8BC7A00EE518D /* area_cn.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = area_cn.plist; sourceTree = "<group>"; };
 		496F593420CBAEF300094595 /* FWPanPopupView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FWPanPopupView.m; sourceTree = "<group>"; };
 		496F593520CBAEF300094595 /* FWPanPopupView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FWPanPopupView.h; sourceTree = "<group>"; };
+		4970E89D22E3069600D6F516 /* FWNavigationController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FWNavigationController.h; sourceTree = "<group>"; };
+		4970E89E22E3069600D6F516 /* FWNavigationController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FWNavigationController.m; sourceTree = "<group>"; };
 		49754ABC20C61DCE009B31CC /* FWGuideMaskView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FWGuideMaskView.h; sourceTree = "<group>"; };
 		49754ABD20C61DCE009B31CC /* FWGuideMaskView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FWGuideMaskView.m; sourceTree = "<group>"; };
 		49754ABF20C66E91009B31CC /* GuideMaskTestVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GuideMaskTestVC.h; sourceTree = "<group>"; };
@@ -170,11 +179,17 @@
 				495FFCF520BBB0CD009746B1 /* FWCustomView.m */,
 				4918FA6220D9DE8500741221 /* FWCustomView2.h */,
 				4918FA6320D9DE8500741221 /* FWCustomView2.m */,
+				4917A3F922704C70009575C9 /* FWCustomView3.h */,
+				4917A3FA22704C70009575C9 /* FWCustomView3.m */,
+				4917A3FC22707803009575C9 /* FWCustomAdView.h */,
+				4917A3FD22707803009575C9 /* FWCustomAdView.m */,
 				49754ABF20C66E91009B31CC /* GuideMaskTestVC.h */,
 				49754AC020C66E91009B31CC /* GuideMaskTestVC.m */,
 				49754AC120C66E91009B31CC /* GuideMaskTestVC.xib */,
 				496B482B20C8BC7100EE518D /* FWAreaPickerView.h */,
 				496B482C20C8BC7100EE518D /* FWAreaPickerView.m */,
+				4970E89D22E3069600D6F516 /* FWNavigationController.h */,
+				4970E89E22E3069600D6F516 /* FWNavigationController.m */,
 				496B482E20C8BC7A00EE518D /* area_cn.plist */,
 				4953B45620B7FC38004B87D7 /* Assets.xcassets */,
 				4953B45820B7FC38004B87D7 /* LaunchScreen.storyboard */,
@@ -243,7 +258,7 @@
 				4953B44620B7FC36004B87D7 /* Sources */,
 				4953B44720B7FC36004B87D7 /* Frameworks */,
 				4953B44820B7FC36004B87D7 /* Resources */,
-				3081EB15F52AF5994B3A1740 /* [CP] Embed Pods Frameworks */,
+				C15595C14F9624FC00E36882 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -362,30 +377,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		3081EB15F52AF5994B3A1740 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-FWPopupViewOC/Pods-FWPopupViewOC-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/FBRetainCycleDetector/FBRetainCycleDetector.framework",
-				"${BUILT_PRODUCTS_DIR}/FWPopupView/FWPopupView.framework",
-				"${BUILT_PRODUCTS_DIR}/MLeaksFinder/MLeaksFinder.framework",
-				"${BUILT_PRODUCTS_DIR}/Masonry/Masonry.framework",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBRetainCycleDetector.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FWPopupView.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MLeaksFinder.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Masonry.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-FWPopupViewOC/Pods-FWPopupViewOC-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		56CA03AEAFBBCAB9E4498BAF /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -404,6 +395,23 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		C15595C14F9624FC00E36882 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-FWPopupViewOC/Pods-FWPopupViewOC-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-FWPopupViewOC/Pods-FWPopupViewOC-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-FWPopupViewOC/Pods-FWPopupViewOC-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -413,13 +421,16 @@
 			files = (
 				496B482D20C8BC7100EE518D /* FWAreaPickerView.m in Sources */,
 				4953B45220B7FC36004B87D7 /* ViewController.m in Sources */,
+				4917A3FB22704C70009575C9 /* FWCustomView3.m in Sources */,
 				4953B45D20B7FC38004B87D7 /* main.m in Sources */,
+				4970E89F22E3069600D6F516 /* FWNavigationController.m in Sources */,
 				4953B48B20B80D4D004B87D7 /* UIView+PopupView.m in Sources */,
 				4953B44F20B7FC36004B87D7 /* AppDelegate.m in Sources */,
 				4953B48220B7FD06004B87D7 /* FWPopupBaseView.m in Sources */,
 				49EA82A321CC6F6F0032A7E8 /* FWPopupRootController.m in Sources */,
 				496F593620CBAEF400094595 /* FWPanPopupView.m in Sources */,
 				4918FA6420D9DE8500741221 /* FWCustomView2.m in Sources */,
+				4917A3FE22707803009575C9 /* FWCustomAdView.m in Sources */,
 				4953B48E20B8152F004B87D7 /* FWPopupWindow.m in Sources */,
 				49754AC220C66E91009B31CC /* GuideMaskTestVC.m in Sources */,
 				49754ABE20C61DCE009B31CC /* FWGuideMaskView.m in Sources */,

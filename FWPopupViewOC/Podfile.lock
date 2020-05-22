@@ -1,9 +1,11 @@
 PODS:
   - FBRetainCycleDetector (0.1.4)
-  - FWPopupView (3.0.2)
+  - FWPopupView (4.1.4):
+    - SnapKit
   - Masonry (1.1.0)
   - MLeaksFinder (1.0.0):
     - FBRetainCycleDetector
+  - SnapKit (4.2.0)
 
 DEPENDENCIES:
   - FWPopupView
@@ -11,18 +13,20 @@ DEPENDENCIES:
   - MLeaksFinder
 
 SPEC REPOS:
-  https://github.com/cocoapods/specs.git:
+  https://github.com/CocoaPods/Specs.git:
     - FBRetainCycleDetector
     - FWPopupView
     - Masonry
     - MLeaksFinder
+    - SnapKit
 
 SPEC CHECKSUMS:
   FBRetainCycleDetector: 46f8179bbb1c587deee3ea838a1a3ee02acf5015
-  FWPopupView: a6dc3959d0843be9bb554a59c7d5262601dd7df3
+  FWPopupView: 8efc8fd8b620fc75756165cdc5163f69b71a7adc
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
   MLeaksFinder: 8c435bd2f6d070af18cff082b503b21adc130fc0
+  SnapKit: fe8a619752f3f27075cc9a90244d75c6c3f27e2a
 
-PODFILE CHECKSUM: fb058bf0b9b900e58d7879210d12346a7faa1775
+PODFILE CHECKSUM: 6a6ba6351120b67d57571a0a822cd7a9a208dcf0
 
-COCOAPODS: 1.6.0.beta.2
+COCOAPODS: 1.9.1

@@ -26,9 +26,6 @@ open class FWAlertView: FWPopupView {
     @objc public var inputBlock: FWPopupInputBlock?
     
     
-    private var titleStr: String?
-    private var detailStr: String?
-    private var inputPlaceholder: String?
     private var actionItemArray: [FWPopupItem] = []
     
     private var titleLabel: UILabel?
@@ -36,10 +33,10 @@ open class FWAlertView: FWPopupView {
     private var inputTF: UITextField?
     private var customView: UIView?
     
-    private var commponenetArray: [UIView] = []
+    private var commponenetCount: Int = 0
     
     
-    /// 单个按钮的弹窗
+    /// 类初始化方法1：单个按钮的弹窗
     ///
     /// - Parameters:
     ///   - title: 标题
@@ -49,10 +46,10 @@ open class FWAlertView: FWPopupView {
     @objc open class func alert(title: String, detail: String, confirmBlock: FWPopupItemClickedBlock? = nil) -> FWAlertView {
         
         let items = [FWPopupItem(title: FWAlertViewProperty().defaultTextOK, itemType: .normal, isCancel: false, canAutoHide: true, itemClickedBlock: confirmBlock)]
-        return self.alert(title: title, detail: detail, inputPlaceholder: nil, keyboardType: .default, customView: nil, items: items, vProperty: nil)
+        return self.alert(title: title, detail: detail, inputPlaceholder: nil, keyboardType: .default, isSecureTextEntry: false, customView: nil, items: items, vProperty: nil)
     }
     
-    /// 两个按钮的弹窗
+    /// 类初始化方法2：两个按钮的弹窗
     ///
     /// - Parameters:
     ///   - title: 标题
@@ -65,10 +62,10 @@ open class FWAlertView: FWPopupView {
         let property = FWAlertViewProperty()
         let items = [FWPopupItem(title: property.defaultTextCancel, itemType: .normal, isCancel: true, canAutoHide: true, itemClickedBlock: cancelBlock),
                      FWPopupItem(title: property.defaultTextConfirm, itemType: .normal, isCancel: false, canAutoHide: true, itemClickedBlock: confirmBlock)]
-        return self.alert(title: title, detail: detail, inputPlaceholder: nil, keyboardType: .default, customView: nil, items: items, vProperty: nil)
+        return self.alert(title: title, detail: detail, inputPlaceholder: nil, keyboardType: .default, isSecureTextEntry: false, customView: nil, items: items, vProperty: nil)
     }
     
-    /// 可带输入框的弹窗
+    /// 类初始化方法3：可带输入框的弹窗
     ///
     /// - Parameters:
     ///   - title: 标题
@@ -76,12 +73,12 @@ open class FWAlertView: FWPopupView {
     ///   - inputPlaceholder: 输入框提示文字。注意：没有输入框时该参数必须要为nil，反之为空或者字符串即可
     ///   - items: 点击按钮项
     /// - Returns: self
-    @objc open class func alert(title: String, detail: String, inputPlaceholder: String?, keyboardType: UIKeyboardType, items: [FWPopupItem]) -> FWAlertView {
+    @objc open class func alert(title: String, detail: String, inputPlaceholder: String?, keyboardType: UIKeyboardType, isSecureTextEntry: Bool, items: [FWPopupItem]) -> FWAlertView {
         
-        return self.alert(title: title, detail: detail, inputPlaceholder: inputPlaceholder, keyboardType: keyboardType, customView: nil, items: items, vProperty: nil)
+        return self.alert(title: title, detail: detail, inputPlaceholder: inputPlaceholder, keyboardType: keyboardType, isSecureTextEntry: isSecureTextEntry, customView: nil, items: items, vProperty: nil)
     }
     
-    /// 可带输入框、自定义视图的弹窗
+    /// 类初始化方法4：可带输入框、自定义视图的弹窗
     ///
     /// - Parameters:
     ///   - title: 标题
@@ -90,12 +87,12 @@ open class FWAlertView: FWPopupView {
     ///   - items: 点击按钮项
     ///   - customView: 自定义UI
     /// - Returns: self
-    @objc open class func alert(title: String, detail: String, inputPlaceholder: String?, keyboardType: UIKeyboardType, customView: UIView?, items: [FWPopupItem]) -> FWAlertView {
+    @objc open class func alert(title: String?, detail: String?, inputPlaceholder: String?, keyboardType: UIKeyboardType, isSecureTextEntry: Bool, customView: UIView?, items: [FWPopupItem]) -> FWAlertView {
         
-        return self.alert(title: title, detail: detail, inputPlaceholder: inputPlaceholder, keyboardType: keyboardType, customView: customView, items: items, vProperty: nil)
+        return self.alert(title: title, detail: detail, inputPlaceholder: inputPlaceholder, keyboardType: keyboardType, isSecureTextEntry: isSecureTextEntry, customView: customView, items: items, vProperty: nil)
     }
     
-    /// 可带输入框、自定义视图的弹窗，可设置Alert相关属性
+    /// 类初始化方法5：可带输入框、自定义视图的弹窗，可设置Alert相关属性
     ///
     /// - Parameters:
     ///   - title: 标题
@@ -105,10 +102,10 @@ open class FWAlertView: FWPopupView {
     ///   - customView: 自定义UI
     ///   - vProperty: FWAlertView的相关属性
     /// - Returns: self
-    @objc open class func alert(title: String?, detail: String?, inputPlaceholder: String?, keyboardType: UIKeyboardType, customView: UIView?, items: [FWPopupItem], vProperty: FWAlertViewProperty?) -> FWAlertView {
+    @objc open class func alert(title: String?, detail: String?, inputPlaceholder: String?, keyboardType: UIKeyboardType, isSecureTextEntry: Bool, customView: UIView?, items: [FWPopupItem], vProperty: FWAlertViewProperty?) -> FWAlertView {
         
         let alertView = FWAlertView()
-        alertView.setupUI(title: title, detail: detail, inputPlaceholder: inputPlaceholder, keyboardType: keyboardType, customView: customView, items: items, vProperty: vProperty)
+        alertView.setupUI(title: title, detail: detail, inputPlaceholder: inputPlaceholder, keyboardType: keyboardType, isSecureTextEntry: isSecureTextEntry, customView: customView, items: items, vProperty: vProperty)
         return alertView
     }
     
@@ -131,14 +128,14 @@ open class FWAlertView: FWPopupView {
     }
     
     deinit {
-        NotificationCenter.default.removeObserver(self, name: .UITextFieldTextDidChange, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UITextField.textDidChangeNotification, object: nil)
     }
 }
 
 
 extension FWAlertView {
     
-    private func setupUI(title: String?, detail: String?, inputPlaceholder: String?, keyboardType: UIKeyboardType, customView: UIView?, items: [FWPopupItem], vProperty: FWAlertViewProperty?) {
+    private func setupUI(title: String?, detail: String?, inputPlaceholder: String?, keyboardType: UIKeyboardType, isSecureTextEntry: Bool, customView: UIView?, items: [FWPopupItem], vProperty: FWAlertViewProperty?) {
         
         if items.count == 0 {
             return
@@ -156,6 +153,11 @@ extension FWAlertView {
         self.frame.origin.x = (UIScreen.main.bounds.width - property.alertViewWidth) / 2
         self.frame.size.width = CGFloat(property.alertViewWidth)
         
+        self.snp.makeConstraints { (make) in
+            make.center.equalToSuperview()
+            make.width.equalTo(CGFloat(property.alertViewWidth))
+        }
+        
         self.setContentCompressionResistancePriority(.required, for: .horizontal)
         self.setContentCompressionResistancePriority(.fittingSizeLevel, for: .vertical)
         
@@ -165,54 +167,83 @@ extension FWAlertView {
         property.popupCustomAlignment = .center
         property.popupAnimationType = .scale3D
         
-        var currentMaxY: CGFloat = property.topBottomMargin
+        self.commponenetCount = 0
+        if title != nil && !title!.isEmpty {
+            self.commponenetCount = self.commponenetCount + 1
+        }
+        if detail != nil && !detail!.isEmpty {
+            self.commponenetCount = self.commponenetCount + 1
+        }
+        if inputPlaceholder != nil {
+            self.commponenetCount = self.commponenetCount + 1
+        }
+        if customView != nil {
+            self.commponenetCount = self.commponenetCount + 1
+        }
+        
+        let singleCommponenetMargin = property.commponentMargin*3
+        
+        var lastConstraintItem = self.snp.top
+        var lastTopBottomMargin: CGFloat = 0.0
         
         if title != nil && !title!.isEmpty {
-            self.titleLabel = UILabel(frame: CGRect(x: self.vProperty.letfRigthMargin, y: currentMaxY, width: self.frame.width - self.vProperty.letfRigthMargin * 2, height: CGFloat.greatestFiniteMagnitude))
+            self.titleLabel = UILabel()
             self.addSubview(self.titleLabel!)
+            self.titleLabel?.snp.makeConstraints({ (make) in
+                var tmpOffset:CGFloat = 0.0
+                if self.commponenetCount == 1 {
+                    tmpOffset = singleCommponenetMargin
+                } else if self.commponenetCount == 2 && (detail != nil && !detail!.isEmpty) {
+                    tmpOffset = property.topBottomMargin + property.commponentMargin
+                } else {
+                    tmpOffset = property.topBottomMargin
+                }
+                make.top.equalToSuperview().offset(tmpOffset)
+                make.left.equalToSuperview().offset(self.vProperty.letfRigthMargin)
+                make.right.equalToSuperview().offset(-self.vProperty.letfRigthMargin)
+            })
             self.titleLabel?.text = title
             self.titleLabel?.textColor = self.vProperty.titleColor
             self.titleLabel?.textAlignment = .center
-            self.titleLabel?.font = UIFont.boldSystemFont(ofSize: self.vProperty.titleFontSize)
+            self.titleLabel?.font = (self.vProperty.titleFont != nil) ? self.vProperty.titleFont! : UIFont.systemFont(ofSize: self.vProperty.titleFontSize)
             self.titleLabel?.numberOfLines = 5
             self.titleLabel?.backgroundColor = UIColor.clear
             
-            self.titleLabel?.sizeToFit()
-            
-            self.titleLabel?.frame = CGRect(x: self.vProperty.letfRigthMargin, y: currentMaxY, width: self.frame.width - self.vProperty.letfRigthMargin * 2, height: self.titleLabel!.frame.height)
-            
-            currentMaxY = self.titleLabel!.frame.maxY
-            
-            self.commponenetArray.append(self.titleLabel!)
+            lastTopBottomMargin = property.topBottomMargin
+            lastConstraintItem = self.titleLabel!.snp.bottom
         }
         
         if detail != nil && !detail!.isEmpty {
-            currentMaxY += self.vProperty.commponentMargin
-            
-            self.detailLabel = UILabel(frame: CGRect(x: self.vProperty.letfRigthMargin, y: currentMaxY, width: self.frame.width - self.vProperty.letfRigthMargin * 2, height: CGFloat.greatestFiniteMagnitude))
+            self.detailLabel = UILabel()
             self.addSubview(self.detailLabel!)
+            self.detailLabel?.snp.makeConstraints({ (make) in
+                make.top.equalTo(lastConstraintItem).offset((self.commponenetCount != 1) ? (lastTopBottomMargin+property.commponentMargin) : singleCommponenetMargin)
+                make.left.equalToSuperview().offset(self.vProperty.letfRigthMargin)
+                make.right.equalToSuperview().offset(-self.vProperty.letfRigthMargin)
+                make.height.lessThanOrEqualTo(self.superview!.frame.size.height*property.popupViewMaxHeightRate-100)
+            })
             self.detailLabel?.text = detail
             self.detailLabel?.textColor = property.detailColor
             self.detailLabel?.textAlignment = .center
-            self.detailLabel?.font = UIFont.boldSystemFont(ofSize: property.detailFontSize)
-            self.detailLabel?.numberOfLines = 5
+            self.detailLabel?.font = (property.detailFont != nil) ? property.detailFont! : UIFont.systemFont(ofSize: property.detailFontSize)
+            self.detailLabel?.numberOfLines = 0
             self.detailLabel?.backgroundColor = UIColor.clear
             
-            self.detailLabel?.sizeToFit()
-            
-            self.detailLabel?.frame = CGRect(x: self.vProperty.letfRigthMargin, y: currentMaxY, width: self.frame.width - self.vProperty.letfRigthMargin * 2, height: self.detailLabel!.frame.height)
-            
-            currentMaxY = self.detailLabel!.frame.maxY
-            
-            self.commponenetArray.append(self.detailLabel!)
+            lastTopBottomMargin = 0.0
+            lastConstraintItem = self.detailLabel!.snp.bottom
         }
         
         if inputPlaceholder != nil {
-            currentMaxY += self.vProperty.commponentMargin
-                
-            self.inputTF = UITextField(frame: CGRect(x: self.vProperty.letfRigthMargin, y: currentMaxY, width: self.frame.width - self.vProperty.letfRigthMargin * 2, height: 40))
+            self.inputTF = UITextField()
             self.addSubview(self.inputTF!)
-            self.inputTF?.placeholder = inputPlaceholder
+            self.inputTF?.snp.makeConstraints({ (make) in
+                make.top.equalTo(lastConstraintItem).offset((self.commponenetCount != 1) ? (lastTopBottomMargin+property.commponentMargin) : singleCommponenetMargin)
+                make.left.equalToSuperview().offset(self.vProperty.letfRigthMargin)
+                make.right.equalToSuperview().offset(-self.vProperty.letfRigthMargin)
+                make.height.equalTo(40)
+            })
+            self.inputTF?.attributedPlaceholder = NSAttributedString(string: inputPlaceholder!, attributes: [NSAttributedString.Key.foregroundColor : property.inputPlaceholderColor])
+            self.inputTF?.textColor = property.inputTextColor
             self.inputTF?.textAlignment = .center
             self.inputTF?.clearButtonMode = .whileEditing
             self.inputTF?.leftViewMode = .always
@@ -220,52 +251,36 @@ extension FWAlertView {
             self.inputTF?.layer.borderWidth = self.vProperty.splitWidth
             self.inputTF?.layer.cornerRadius = self.vProperty.cornerRadius
             self.inputTF?.keyboardType = keyboardType
+            self.inputTF?.isSecureTextEntry = isSecureTextEntry
             
-            currentMaxY = self.inputTF!.frame.maxY
-            
-            self.commponenetArray.append(self.inputTF!)
+            lastTopBottomMargin = 0.0
+            lastConstraintItem = self.inputTF!.snp.bottom
         }
         
         if customView != nil {
-            currentMaxY += self.vProperty.commponentMargin
-            
             self.customView = customView
-            self.customView?.frame = CGRect(x: (self.frame.width - self.customView!.frame.width) / 2, y: currentMaxY, width: self.customView!.frame.width, height: self.customView!.frame.height)
-            
             self.addSubview(self.customView!)
+            self.customView?.snp.makeConstraints({ (make) in
+                make.top.equalTo(lastConstraintItem).offset((self.commponenetCount != 1) ? (lastTopBottomMargin+property.commponentMargin) : singleCommponenetMargin)
+                make.centerX.equalToSuperview()
+                make.size.equalTo(customView!.frame.size)
+            })
             
-            currentMaxY = self.customView!.frame.maxY
-            
-            self.commponenetArray.append(self.customView!)
+            lastTopBottomMargin = 0.0
+            lastConstraintItem = self.customView!.snp.bottom
         }
         
-        currentMaxY += self.vProperty.topBottomMargin
-        
-        // 调整
-        if currentMaxY < property.alertViewMinHeight - self.vProperty.buttonHeight {
-            currentMaxY = property.alertViewMinHeight - self.vProperty.buttonHeight
-            
-            var tmpMargin:CGFloat = 0
-            var tmpHeight:CGFloat = currentMaxY
-            for view in self.commponenetArray {
-                tmpHeight -= view.frame.height
-            }
-            tmpMargin = tmpHeight / CGFloat((self.commponenetArray.count + 1))
-            
-            var tmpHeight2 = tmpMargin
-            for view in self.commponenetArray {
-                view.frame.origin.y = tmpHeight2
-                tmpHeight2 = view.frame.maxY + tmpMargin
-            }
-        }
-        
-        let btnContrainerView = UIView(frame: CGRect(x: 0, y: currentMaxY, width: self.frame.width, height: self.vProperty.buttonHeight))
-        btnContrainerView.backgroundColor = UIColor.clear
+        let btnContrainerView = UIView()
         self.addSubview(btnContrainerView)
+        btnContrainerView.backgroundColor = UIColor.clear
+        btnContrainerView.snp.makeConstraints { (make) in
+            make.top.equalTo(lastConstraintItem).offset((self.commponenetCount != 1) ? (property.topBottomMargin+property.commponentMargin) : singleCommponenetMargin)
+            make.left.right.equalToSuperview()
+        }
         
-        currentMaxY = btnContrainerView.frame.maxY
-        
+        var lastBtn: UIButton!
         var tmpIndex = 0
+        
         for popupItem: FWPopupItem in items {
             
             let btn = UIButton(type: .custom)
@@ -274,20 +289,37 @@ extension FWAlertView {
             btn.tag = tmpIndex
             
             if items.count == 1 {
-                btn.frame = CGRect(x: -self.vProperty.splitWidth, y: 0, width: btnContrainerView.frame.width + self.vProperty.splitWidth * 2, height: self.vProperty.buttonHeight + self.vProperty.splitWidth)
+                btn.snp.makeConstraints { (make) in
+                    make.top.left.right.equalTo(btnContrainerView).inset(UIEdgeInsets(top: 0, left: -self.vProperty.splitWidth, bottom: 0, right: -self.vProperty.splitWidth))
+                    make.height.equalTo(property.buttonHeight + property.splitWidth)
+                }
             } else if items.count == 2 {
-                let btnW = (btnContrainerView.frame.width + self.vProperty.splitWidth * 4) / 2
-                btn.frame = CGRect(x: -self.vProperty.splitWidth + btnW * CGFloat(tmpIndex), y: 0, width: btnW, height: self.vProperty.buttonHeight + self.vProperty.splitWidth)
+                let btnW = (property.alertViewWidth + self.vProperty.splitWidth * 4) / 2
+                btn.snp.makeConstraints { (make) in
+                    make.top.equalToSuperview()
+                    make.left.equalToSuperview().offset(-property.splitWidth+btnW*CGFloat(tmpIndex))
+                    make.width.equalTo(btnW)
+                    make.height.equalTo(property.buttonHeight + property.splitWidth)
+                }
             } else {
-                btn.frame = CGRect(x: -self.vProperty.splitWidth, y: self.vProperty.buttonHeight * CGFloat(tmpIndex), width: btnContrainerView.frame.width + self.vProperty.splitWidth * 2, height: self.vProperty.buttonHeight + self.vProperty.splitWidth)
-                
-                if tmpIndex > 0 {
-                    currentMaxY += btn.frame.height
-                    if tmpIndex == items.count - 1 {
-                        btnContrainerView.frame.size.height = btn.frame.maxY
+                btn.snp.makeConstraints { (make) in
+                    make.left.right.equalTo(btnContrainerView).inset(UIEdgeInsets(top: 0, left: -self.vProperty.splitWidth, bottom: 0, right: -self.vProperty.splitWidth))
+                    make.height.equalTo(property.buttonHeight + property.splitWidth)
+                    make.width.equalTo(btnContrainerView).offset(property.splitWidth*2)
+                    if tmpIndex == 0 {
+                        make.top.equalToSuperview()
+                        lastBtn = btn
+                    } else {
+                        make.top.equalTo(lastBtn.snp.bottom).offset(-self.vProperty.splitWidth)
+                        lastBtn = btn
                     }
                 }
             }
+            
+            if tmpIndex == items.count-1 {
+                lastBtn = btn
+            }
+            
             // 按钮背景颜色
             if popupItem.itemBackgroundColor != nil {
                 btn.backgroundColor = popupItem.itemBackgroundColor
@@ -301,17 +333,28 @@ extension FWAlertView {
                 btn.setTitleColor(popupItem.highlight ? self.vProperty.itemHighlightColor : self.vProperty.itemNormalColor, for: .normal)
             }
             
+            // 按钮文字大小
+            if popupItem.itemTitleFont != nil {
+                btn.titleLabel?.font = popupItem.itemTitleFont
+            } else {
+                btn.titleLabel?.font = (self.vProperty.buttonFont != nil) ? self.vProperty.buttonFont! : UIFont.systemFont(ofSize: self.vProperty.buttonFontSize)
+            }
+            
             btn.setTitle(popupItem.title, for: .normal)
             btn.layer.borderWidth = self.vProperty.splitWidth
             btn.layer.borderColor = self.vProperty.splitColor.cgColor
             btn.setBackgroundImage(self.getImageWithColor(color: btn.backgroundColor!), for: .normal)
             btn.setBackgroundImage(self.getImageWithColor(color: self.vProperty.itemPressedColor), for: .highlighted)
-            btn.titleLabel?.font = UIFont.boldSystemFont(ofSize: self.vProperty.buttonFontSize)
             
             tmpIndex += 1
         }
+        lastBtn.snp.makeConstraints { (make) in
+            make.bottom.equalTo(btnContrainerView.snp.bottom)
+        }
         
-        self.frame.size.height = currentMaxY
+        self.snp.makeConstraints { (make) in
+            make.bottom.equalTo(btnContrainerView.snp.bottom)
+        }
     }
 }
 
@@ -348,21 +391,28 @@ extension FWAlertView {
 open class FWAlertViewProperty: FWPopupViewProperty {
     
     // FWAlertView宽度
-    @objc open var alertViewWidth: CGFloat      = 275.0
+    @objc open var alertViewWidth: CGFloat = 275.0
     // 为保持FWAlertView美观，设置FWAlertView的最小高度
-    @objc open var alertViewMinHeight: CGFloat  = 150
+    @objc open var alertViewMinHeight: CGFloat = 150
     
     // 描述字体大小
-    @objc open var detailFontSize: CGFloat      = 14.0
+    @objc open var detailFontSize: CGFloat = 14.0
+    // 描述字体，设置该值后detailFontSize无效
+    @objc open var detailFont: UIFont?
     // 描述文字颜色
-    @objc open var detailColor: UIColor         = kPV_RGBA(r: 51, g: 51, b: 51, a: 1)
+    @objc open var detailColor: UIColor = kPV_RGBA(r: 51, g: 51, b: 51, a: 1)
+    
+    // 输入框提示文字颜色
+    @objc open var inputPlaceholderColor: UIColor = UIColor.lightGray
+    // 输入框文字颜色
+    @objc open var inputTextColor: UIColor = kPV_RGBA(r: 51, g: 51, b: 51, a: 1)
     
     // 确定按钮默认名称
-    @objc open var defaultTextOK                = "知道了"
+    @objc open var defaultTextOK = "知道了"
     // 取消按钮默认名称
-    @objc open var defaultTextCancel            = "取消"
+    @objc open var defaultTextCancel = "取消"
     // 确定按钮默认名称
-    @objc open var defaultTextConfirm           = "确定"
+    @objc open var defaultTextConfirm = "确定"
     
     
     public override func reSetParams() {
