@@ -1,6 +1,2 @@
 ${PODS_ROOT}/Target Support Files/Pods-FWPopupViewOC/Pods-FWPopupViewOC-frameworks.sh
-${BUILT_PRODUCTS_DIR}/FBRetainCycleDetector/FBRetainCycleDetector.framework
-${BUILT_PRODUCTS_DIR}/FWPopupView/FWPopupView.framework
-${BUILT_PRODUCTS_DIR}/MLeaksFinder/MLeaksFinder.framework
 ${BUILT_PRODUCTS_DIR}/Masonry/Masonry.framework
-${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework

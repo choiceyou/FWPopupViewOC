@@ -28,7 +28,7 @@ Pod::Spec.new do |s|
   只需要基础弹窗基类，可以随意实现各种方向以及n种动画的弹窗。使用非常方便！
                    DESC
 
-  s.homepage     = "https://github.com/choiceyou/FWPopupView"
+  s.homepage     = "https://github.com/choiceyou/FWPopupViewOC"
   # s.screenshots  = "www.example.com/screenshots_1.gif", "www.example.com/screenshots_2.gif"
 
 
@@ -65,7 +65,7 @@ Pod::Spec.new do |s|
   #
 
   s.platform     = :ios
-  s.platform     = :ios, "7.0"
+  s.platform     = :ios, "8.0"
 
   #  When using multiple platforms
   # s.ios.deployment_target = "5.0"
@@ -118,7 +118,7 @@ Pod::Spec.new do |s|
   #
 
   # s.framework  = "SomeFramework"
-  # s.frameworks = "SomeFramework", "AnotherFramework"
+  s.frameworks = "UIKit", "QuartzCore"
 
   # s.library   = "iconv"
   # s.libraries = "iconv", "xml2"
