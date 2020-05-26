@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "FWPopupViewOC"
-  s.version      = "3.0.8"
+  s.version      = "3.0.9"
   s.summary      = "信手拈来的自定义弹窗-OC版本"
 
   # This description is used to generate tags and improve search results.
@@ -64,7 +64,6 @@ Pod::Spec.new do |s|
   #  the deployment target. You can optionally include the target after the platform.
   #
 
-  s.platform     = :ios
   s.platform     = :ios, "8.0"
 
   #  When using multiple platforms
@@ -91,7 +90,7 @@ Pod::Spec.new do |s|
   #  Not including the public_header_files will make all headers public.
   #
 
-  s.source_files  = "FWPopupViewOC/FWPopupViewOC/FWPopupViewOC/*.{h,m}"
+  s.source_files  = "FWPopupViewOC", "FWPopupViewOC/**/*.{h,m}"
   # s.exclude_files = "Classes/Exclude"
 
   # s.public_header_files = "Classes/**/*.h"
@@ -106,7 +105,7 @@ Pod::Spec.new do |s|
   #
 
   # s.resource  = "icon.png"
-  s.resources = "FWPopupViewOC/FWPopupViewOC/FWPopupViewOC/Resources/FWPopupViewOC.bundle"
+  s.resources = "FWPopupViewOC", "FWPopupViewOC/**/Resources/FWPopupViewOC.bundle"
 
   # s.preserve_paths = "FilesToSave", "MoreFilesToSave"
 
