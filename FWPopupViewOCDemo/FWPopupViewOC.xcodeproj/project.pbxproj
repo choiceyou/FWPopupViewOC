@@ -18,6 +18,7 @@
 		4953B46720B7FC38004B87D7 /* FWPopupViewOCTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4953B46620B7FC38004B87D7 /* FWPopupViewOCTests.m */; };
 		4953B47220B7FC38004B87D7 /* FWPopupViewOCUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4953B47120B7FC38004B87D7 /* FWPopupViewOCUITests.m */; };
 		495FFCF620BBB0CD009746B1 /* FWCustomView.m in Sources */ = {isa = PBXBuildFile; fileRef = 495FFCF520BBB0CD009746B1 /* FWCustomView.m */; };
+		496304A1247E7251006B121E /* FWPopupBaseView.m in Sources */ = {isa = PBXBuildFile; fileRef = 496304A0247E7251006B121E /* FWPopupBaseView.m */; };
 		496B482D20C8BC7100EE518D /* FWAreaPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 496B482C20C8BC7100EE518D /* FWAreaPickerView.m */; };
 		496B482F20C8BC7A00EE518D /* area_cn.plist in Resources */ = {isa = PBXBuildFile; fileRef = 496B482E20C8BC7A00EE518D /* area_cn.plist */; };
 		4970E89F22E3069600D6F516 /* FWNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4970E89E22E3069600D6F516 /* FWNavigationController.m */; };
@@ -25,7 +26,6 @@
 		49754AC320C66E91009B31CC /* GuideMaskTestVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 49754AC120C66E91009B31CC /* GuideMaskTestVC.xib */; };
 		49783040247CC79D0067F54C /* FWPopupWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 49783034247CC79D0067F54C /* FWPopupWindow.m */; };
 		49783041247CC79D0067F54C /* FWGuideMaskView.m in Sources */ = {isa = PBXBuildFile; fileRef = 49783035247CC79D0067F54C /* FWGuideMaskView.m */; };
-		49783042247CC79D0067F54C /* FWPopupBaseView.m in Sources */ = {isa = PBXBuildFile; fileRef = 49783036247CC79D0067F54C /* FWPopupBaseView.m */; };
 		49783043247CC79D0067F54C /* FWPopupViewOC.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 49783038247CC79D0067F54C /* FWPopupViewOC.bundle */; };
 		49783044247CC79D0067F54C /* FWPanPopupView.m in Sources */ = {isa = PBXBuildFile; fileRef = 49783039247CC79D0067F54C /* FWPanPopupView.m */; };
 		49783045247CC79D0067F54C /* FWPopupRootController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4978303B247CC79D0067F54C /* FWPopupRootController.m */; };
@@ -76,6 +76,8 @@
 		4953B47320B7FC38004B87D7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		495FFCF420BBB0CD009746B1 /* FWCustomView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FWCustomView.h; sourceTree = "<group>"; };
 		495FFCF520BBB0CD009746B1 /* FWCustomView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FWCustomView.m; sourceTree = "<group>"; };
+		4963049F247E7251006B121E /* FWPopupBaseView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FWPopupBaseView.h; sourceTree = "<group>"; };
+		496304A0247E7251006B121E /* FWPopupBaseView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FWPopupBaseView.m; sourceTree = "<group>"; };
 		496B482B20C8BC7100EE518D /* FWAreaPickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FWAreaPickerView.h; sourceTree = "<group>"; };
 		496B482C20C8BC7100EE518D /* FWAreaPickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FWAreaPickerView.m; sourceTree = "<group>"; };
 		496B482E20C8BC7A00EE518D /* area_cn.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = area_cn.plist; sourceTree = "<group>"; };
@@ -88,13 +90,11 @@
 		49783033247CC79D0067F54C /* FWPopupRootController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FWPopupRootController.h; sourceTree = "<group>"; };
 		49783034247CC79D0067F54C /* FWPopupWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FWPopupWindow.m; sourceTree = "<group>"; };
 		49783035247CC79D0067F54C /* FWGuideMaskView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FWGuideMaskView.m; sourceTree = "<group>"; };
-		49783036247CC79D0067F54C /* FWPopupBaseView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FWPopupBaseView.m; path = Resources/FWPopupBaseView.m; sourceTree = "<group>"; };
 		49783038247CC79D0067F54C /* FWPopupViewOC.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = FWPopupViewOC.bundle; sourceTree = "<group>"; };
 		49783039247CC79D0067F54C /* FWPanPopupView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FWPanPopupView.m; sourceTree = "<group>"; };
 		4978303A247CC79D0067F54C /* FWPopupWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FWPopupWindow.h; sourceTree = "<group>"; };
 		4978303B247CC79D0067F54C /* FWPopupRootController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FWPopupRootController.m; sourceTree = "<group>"; };
 		4978303C247CC79D0067F54C /* UIView+PopupView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+PopupView.m"; sourceTree = "<group>"; };
-		4978303D247CC79D0067F54C /* FWPopupBaseView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FWPopupBaseView.h; path = Resources/FWPopupBaseView.h; sourceTree = "<group>"; };
 		4978303E247CC79D0067F54C /* FWGuideMaskView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FWGuideMaskView.h; sourceTree = "<group>"; };
 		4978303F247CC79D0067F54C /* FWPanPopupView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FWPanPopupView.h; sourceTree = "<group>"; };
 		7C11AEB1B069394B0BA25D5D /* libPods-FWPopupViewOCTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-FWPopupViewOCTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -212,8 +212,8 @@
 		49783031247CC79D0067F54C /* FWPopupViewOC */ = {
 			isa = PBXGroup;
 			children = (
-				4978303D247CC79D0067F54C /* FWPopupBaseView.h */,
-				49783036247CC79D0067F54C /* FWPopupBaseView.m */,
+				4963049F247E7251006B121E /* FWPopupBaseView.h */,
+				496304A0247E7251006B121E /* FWPopupBaseView.m */,
 				4978303A247CC79D0067F54C /* FWPopupWindow.h */,
 				49783034247CC79D0067F54C /* FWPopupWindow.m */,
 				4978303E247CC79D0067F54C /* FWGuideMaskView.h */,
@@ -422,8 +422,8 @@
 			files = (
 				49783046247CC79D0067F54C /* UIView+PopupView.m in Sources */,
 				496B482D20C8BC7100EE518D /* FWAreaPickerView.m in Sources */,
-				49783042247CC79D0067F54C /* FWPopupBaseView.m in Sources */,
 				4953B45220B7FC36004B87D7 /* ViewController.m in Sources */,
+				496304A1247E7251006B121E /* FWPopupBaseView.m in Sources */,
 				4917A3FB22704C70009575C9 /* FWCustomView3.m in Sources */,
 				4953B45D20B7FC38004B87D7 /* main.m in Sources */,
 				4970E89F22E3069600D6F516 /* FWNavigationController.m in Sources */,
